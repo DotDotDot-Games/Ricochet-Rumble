@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dr8ha6ebd27w1"]
+
+[ext_resource type="PackedScene" uid="uid://cgldot81dekh3" path="res://content/item_spawners/item_spawner_node.tscn" id="1_4xhg1"]
+[ext_resource type="Script" uid="uid://c8yemeqj0xdjs" path="res://resources/item_spawner_data.gd" id="2_jcngq"]
+
+[sub_resource type="Resource" id="Resource_4xhg1"]
+script = ExtResource("2_jcngq")
+metadata/_custom_type_script = "uid://c8yemeqj0xdjs"
+
+[node name="TestSpawner" unique_id=1267481385 instance=ExtResource("1_4xhg1")]
+info = SubResource("Resource_4xhg1")
+
+[node name="GeneratedItems" type="Node" parent="." index="1" unique_id=1334467386]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorldItemData" format=3 uid="uid://cd2mr4qey5uw8"]
+
+[ext_resource type="Script" uid="uid://ded7xfpydmriw" path="res://resources/items/world_item_data.gd" id="1_vacg4"]
+[ext_resource type="Resource" uid="uid://cet8eiqtw4hda" path="res://content/items/test_item/test_item.tres" id="1_yy3vc"]
+[ext_resource type="Resource" uid="uid://du0dk6tfv3whn" path="res://content/items/test_item/pickable_test_item.tres" id="2_uwpkx"]
+
+[resource]
+script = ExtResource("1_vacg4")
+id = "world_test_item"
+item_data = ExtResource("1_yy3vc")
+pickable_data = ExtResource("2_uwpkx")
+metadata/_custom_type_script = "uid://ded7xfpydmriw"

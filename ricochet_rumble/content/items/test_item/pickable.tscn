@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://gorows5mn6h3"]
+
+[ext_resource type="PackedScene" uid="uid://1ks8qojlsf20" path="res://content/items/item_pickable_node.tscn" id="1_mmrce"]
+[ext_resource type="Resource" uid="uid://du0dk6tfv3whn" path="res://content/items/test_item/pickable_test_item.tres" id="2_8d8m2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_imloy"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g4dk"]
+size = Vector2(64, 64)
+
+[node name="ItemPickableNode" unique_id=1815118643 instance=ExtResource("1_mmrce")]
+texture = SubResource("PlaceholderTexture2D_imloy")
+info = ExtResource("2_8d8m2")
+
+[node name="CollisionShape2D" parent="Area" parent_id_path=PackedInt32Array(8501530) index="0" unique_id=75641511]
+shape = SubResource("RectangleShape2D_5g4dk")

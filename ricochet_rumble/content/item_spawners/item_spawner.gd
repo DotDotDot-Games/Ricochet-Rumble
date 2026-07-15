@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 class_name ItemSpawnerNode
 
 @onready var timer: Timer = $Timer
+@onready var generated_items: Node = $GeneratedItems
 
 ## Spawner info
 @export var info: ItemSpawnerData:
@@ -14,7 +15,6 @@ class_name ItemSpawnerNode
 
 ## Item spawned by spawner (null if is not spawned)
 @export var item: WorldItemData = null
-@onready var generated_items: Node = $GeneratedItems
 
 ## Define if spawner is spawning a new item
 var spawning := true
@@ -48,9 +48,6 @@ func _update_ids() -> void:
 
 func _can_spawn_item(data: ItemData):
 	return (not data.id in info.ignore) and data.spawneable
-
-func _is_id_in_ignore(id: StringName):
-	return not id in info.ignore
 
 func _start_spawn() -> void:
 	spawning = true

@@ -2,6 +2,8 @@ extends ShareableResource
 
 class_name ItemSpawnerData
 
+@export var texture: SpriteFrames
+
 ## Item spawn time
 @export var spawn_time := 5.0
 

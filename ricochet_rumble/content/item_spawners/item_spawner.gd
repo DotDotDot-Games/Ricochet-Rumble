@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends AnimatedSprite2D
 
 class_name ItemSpawnerNode
 
@@ -14,6 +14,7 @@ class_name ItemSpawnerNode
 
 ## Item spawned by spawner (null if is not spawned)
 @export var item: WorldItemData = null
+@onready var generated_items: Node = $GeneratedItems
 
 ## Define if spawner is spawning a new item
 var spawning := true
@@ -38,6 +39,7 @@ func _update_info():
 		print(info.to_dict())
 	
 	_update_ids()
+	self.sprite_frames = info.texture
 
 func _update_ids() -> void:
 	
@@ -66,7 +68,16 @@ func _on_timer_timeout() -> void:
 		_start_despawn()
 		
 		item = DATABASE.load_entry(IDS.pick_random())
+		generated_items.add_child(ItemPickableNode.generate(item.pickable_data))
 		print("Spawned: ", item.to_dict())
 	else:
-		item = null
+		_remove_generated_item()
 		_start_spawn()
+
+func _remove_generated_item() -> void:
+	item = null
+	
+	for child in generated_items.get_children():
+		
+		if child is ItemPickableNode:
+			child.queue_free()

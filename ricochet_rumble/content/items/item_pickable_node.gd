@@ -13,8 +13,13 @@ func _ready() -> void:
 	
 	self.texture = info.texture
 
+static func generate(data: ItemPickableData) -> ItemPickableNode:
+	
+	var node: ItemPickableNode = load(data.scene).instantiate()
+	
+	return node
 
 # TODO: Implement pickup when the player is implemented.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

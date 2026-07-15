@@ -1,28 +1,42 @@
 extends CharacterBody2D
 
 #constants
-var speed := 300
+
 var direction := Vector2(1,0)
-var bullet_speed = 8
+var speed
+var bullet_speed 
+var max_bounces
+@export var stats: player_stats
 
 #vars
 var moving
 var facing = Vector2(-1,0)
 #scenes
 var bullet = preload("res://scenes/bullet.tscn")
-@onready var bullet_node = $"../Bullets"
-@onready var UI = $"../UI"
+@export var bullet_stat : bullet_stats
+@onready var bullet_node = $"../../Bullets"
+@onready var UI = $"../../UI"
 
-func _physics_process(delta: float) -> void:
-	direction = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
+func _ready():
+	modulate = stats.color
+	set_up_variables()
 	
+	
+func _physics_process(delta: float) -> void:
+	if stats.player_type == 0:
+		direction = Input.get_vector("LEFT_P1", "RIGHT_P1", "UP_P1", "DOWN_P1")
+		if Input.is_action_just_pressed("SHOOT_P1"):
+			shoot()
+	else :
+		direction = Input.get_vector("LEFT_P2", "RIGHT_P2", "UP_P2", "DOWN_P2")
+		if Input.is_action_just_pressed("SHOOT_P2"):
+			shoot()
+		
 	if direction != Vector2.ZERO:
 		facing = direction.normalized()
 	
 	
 	
-	if Input.is_action_just_pressed("SHOOT"):
-		shoot()
 		
 	velocity = direction.normalized() * speed
 	move_and_slide()
@@ -33,10 +47,16 @@ func shoot():
 	bullet_node.add_child(bullet_obj)
 	bullet_obj.global_position = global_position + facing * 40
 	bullet_obj.velocity = facing * bullet_speed
+	bullet_obj.max_bounces = max_bounces
+
+func set_up_variables():
+	speed = stats.speed
+	bullet_speed = bullet_stat.speed
+	max_bounces = bullet_stat.max_bounces
 	
 func kill():
-	UI.visible = true
-	for child in UI.get_children():
-		child.visible = true
+	#UI.visible = true
+	#for child in UI.get_children():
+	#	child.visible = true
 	queue_free()
 	

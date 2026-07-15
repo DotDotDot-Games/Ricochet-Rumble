@@ -6,4 +6,5 @@
 script = ExtResource("1_3r5pw")
 speed = 8.0
 max_bounces = 2.0
+damage = 10.0
 metadata/_custom_type_script = "uid://dv34np0gi74dy"

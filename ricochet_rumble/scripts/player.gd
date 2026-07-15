@@ -3,12 +3,14 @@ extends CharacterBody2D
 #constants
 
 var direction := Vector2(1,0)
+var health
 var speed
 var bullet_speed 
 var max_bounces
 @export var stats: player_stats
 
 #vars
+
 var moving
 var facing = Vector2(-1,0)
 #scenes
@@ -19,10 +21,14 @@ var bullet = preload("res://scenes/bullet.tscn")
 
 func _ready():
 	modulate = stats.color
+	health = stats.health
 	set_up_variables()
 	
 	
 func _physics_process(delta: float) -> void:
+	print(health)
+	if health <= 0:
+		kill()
 	if stats.player_type == 0:
 		direction = Input.get_vector("LEFT_P1", "RIGHT_P1", "UP_P1", "DOWN_P1")
 		if Input.is_action_just_pressed("SHOOT_P1"):
@@ -41,14 +47,18 @@ func _physics_process(delta: float) -> void:
 	velocity = direction.normalized() * speed
 	move_and_slide()
 	
+	
 
 func shoot():
 	var bullet_obj = bullet.instantiate()
+	bullet_obj.stats = bullet_stat
 	bullet_node.add_child(bullet_obj)
 	bullet_obj.global_position = global_position + facing * 40
 	bullet_obj.velocity = facing * bullet_speed
-	bullet_obj.max_bounces = max_bounces
 
+func damage(value):
+	health -= value
+	
 func set_up_variables():
 	speed = stats.speed
 	bullet_speed = bullet_stat.speed

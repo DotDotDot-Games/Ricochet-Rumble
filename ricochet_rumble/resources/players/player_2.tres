@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="player_stats" format=3 uid="uid://c2ma7k5aeo5xb"]
+
+[ext_resource type="Script" uid="uid://dvwrcysmerik0" path="res://resources/players/player_stats.gd" id="1_pyjqt"]
+
+[resource]
+script = ExtResource("1_pyjqt")
+player_type = 1
+health = 100.0
+speed = 300.0
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://dvwrcysmerik0"

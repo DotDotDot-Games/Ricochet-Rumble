@@ -30,6 +30,18 @@ func _ready():
 	
 	_start_spawn()
 
+func _process(_delta):
+	
+	if Engine.is_editor_hint():
+		return
+	
+	if self.sprite_frames.has_animation(&"spawning"):
+		if spawning and timer.time_left <= 2.5 and animation != &"spawning":
+			self.play("spawning")
+		else:
+			if not spawning and animation == &"spawning":
+				self.play("default")
+
 func _update_info():
 	
 	if not info:
@@ -47,6 +59,10 @@ func _update_ids() -> void:
 	print("IDs: ", IDS)
 
 func _can_spawn_item(data: ItemData):
+	
+	if info.only.size() > 0:
+		return data.id in info.only and data.spawneable
+	
 	return (not data.id in info.ignore) and data.spawneable
 
 func _start_spawn() -> void:

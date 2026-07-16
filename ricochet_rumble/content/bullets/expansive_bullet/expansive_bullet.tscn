@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://hknfdqyi3i6t"]
+
+[ext_resource type="PackedScene" uid="uid://b6qam0hoxbarb" path="res://content/bullets/bullet.tscn" id="1_uwwfs"]
+[ext_resource type="Script" uid="uid://dq5hxw24ahvps" path="res://content/bullets/expansive_bullet/expansive_bullet.gd" id="2_nmbqj"]
+[ext_resource type="Script" uid="uid://6q5kx66wrigb" path="res://components/resources/limited_value.gd" id="2_oxr3y"]
+[ext_resource type="Script" uid="uid://dv34np0gi74dy" path="res://resources/bullets/bullet_stats.gd" id="3_nmbqj"]
+[ext_resource type="Texture2D" uid="uid://c4u7cplns077f" path="res://content/bullets/expansive_bullet/expansive_bullet.png" id="4_b4x1y"]
+
+[sub_resource type="Resource" id="Resource_r4igy"]
+script = ExtResource("2_oxr3y")
+_current_value = 1.0
+_max_value = 1.0
+metadata/_custom_type_script = "uid://6q5kx66wrigb"
+
+[sub_resource type="Resource" id="Resource_1lgpe"]
+script = ExtResource("3_nmbqj")
+_id = "expansive_bullet"
+name = "Expansive Bullet"
+speed = 500.0
+bounces = SubResource("Resource_r4igy")
+damage = 20.0
+texture = ExtResource("4_b4x1y")
+scene = "uid://hknfdqyi3i6t"
+metadata/_custom_type_script = "uid://dv34np0gi74dy"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fn57x"]
+radius = 16.0
+
+[node name="Bullet" unique_id=1132919546 instance=ExtResource("1_uwwfs")]
+script = ExtResource("2_nmbqj")
+stats = SubResource("Resource_1lgpe")
+
+[node name="Sprite2D" parent="." index="0" unique_id=99382734]
+texture = ExtResource("4_b4x1y")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=913342262]
+shape = SubResource("CircleShape2D_fn57x")
+
+[connection signal="on_bounce" from="." to="." method="_on_bounce"]

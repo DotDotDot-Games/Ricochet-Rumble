@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dg06f3dj78knq"]
+
+[ext_resource type="PackedScene" uid="uid://b6qam0hoxbarb" path="res://content/bullets/bullet.tscn" id="1_jjliv"]
+[ext_resource type="Script" uid="uid://6q5kx66wrigb" path="res://components/resources/limited_value.gd" id="2_6c5oe"]
+[ext_resource type="Script" uid="uid://dv34np0gi74dy" path="res://resources/bullets/bullet_stats.gd" id="3_3vs1q"]
+[ext_resource type="Texture2D" uid="uid://terkb632f070" path="res://assets/ball.png" id="4_mbu11"]
+
+[sub_resource type="Resource" id="Resource_o1v2v"]
+script = ExtResource("2_6c5oe")
+_current_value = 3.0
+_max_value = 3.0
+metadata/_custom_type_script = "uid://6q5kx66wrigb"
+
+[sub_resource type="Resource" id="Resource_pr0ml"]
+script = ExtResource("3_3vs1q")
+_id = "mini_bullet"
+name = "Mini Bullet"
+speed = 750.0
+bounces = SubResource("Resource_o1v2v")
+damage = 10.0
+texture = ExtResource("4_mbu11")
+scene = "uid://dg06f3dj78knq"
+metadata/_custom_type_script = "uid://dv34np0gi74dy"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ic5ld"]
+radius = 8.0
+
+[node name="MiniBullet" unique_id=1132919546 instance=ExtResource("1_jjliv")]
+stats = SubResource("Resource_pr0ml")
+
+[node name="Sprite2D" parent="." index="0" unique_id=99382734]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mbu11")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=913342262]
+shape = SubResource("CircleShape2D_ic5ld")

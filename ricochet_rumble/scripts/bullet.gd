@@ -52,4 +52,4 @@ func bounce(collision: Vector2):
 	on_bounce.emit()
 
 func can_damage() -> bool:
-	return abs(stats.bounces.current_value - stats.bounces.max_value) >= 1
+	return stats.bounces.max_value - stats.bounces.current_value >= 1

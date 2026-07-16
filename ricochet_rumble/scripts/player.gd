@@ -25,7 +25,7 @@ func _ready():
 	
 	
 func _physics_process(_delta: float) -> void:
-	print(stats.health)
+	#print(stats.health)
 	if stats.health <= 0:
 		kill()
 		

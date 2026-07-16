@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c0gsgwlgqp7x3"]
+
+[ext_resource type="PackedScene" uid="uid://b6qam0hoxbarb" path="res://content/bullets/bullet.tscn" id="1_g0da1"]
+[ext_resource type="Script" uid="uid://y3e7hh15sndt" path="res://content/bullets/ricocheting_bullet/ricochet_bullet.gd" id="2_brkpf"]
+[ext_resource type="Script" uid="uid://6q5kx66wrigb" path="res://components/resources/limited_value.gd" id="2_t7sxl"]
+[ext_resource type="Script" uid="uid://dv34np0gi74dy" path="res://resources/bullets/bullet_stats.gd" id="3_brkpf"]
+[ext_resource type="Texture2D" uid="uid://cmd5xsy572pbk" path="res://content/bullets/ricocheting_bullet/ricochet_bullet.png" id="4_i2dit"]
+
+[sub_resource type="Resource" id="Resource_d5tc6"]
+script = ExtResource("2_t7sxl")
+_current_value = 5.0
+_max_value = 5.0
+metadata/_custom_type_script = "uid://6q5kx66wrigb"
+
+[sub_resource type="Resource" id="Resource_u143d"]
+script = ExtResource("3_brkpf")
+_id = "ricocheting_bullet"
+name = "Ricocheting Bullet"
+speed = 500.0
+bounces = SubResource("Resource_d5tc6")
+damage = 20.0
+texture = ExtResource("4_i2dit")
+scene = "uid://c0gsgwlgqp7x3"
+metadata/_custom_type_script = "uid://dv34np0gi74dy"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0usyi"]
+radius = 16.0
+
+[node name="RicochetBullet" unique_id=1132919546 instance=ExtResource("1_g0da1")]
+script = ExtResource("2_brkpf")
+multiplicator = 1.2
+stats = SubResource("Resource_u143d")
+
+[node name="Sprite2D" parent="." index="0" unique_id=99382734]
+texture = ExtResource("4_i2dit")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=913342262]
+shape = SubResource("CircleShape2D_0usyi")
+
+[connection signal="on_bounce" from="." to="." method="_on_bounce"]

@@ -14,14 +14,13 @@ class_name WeaponNode
 @export var player: PlayerNode
 @export var stats: WeaponData:
 	set(value):
-		
-		if value:
-			value = value.duplicate(true)
 			
 		stats = value
 		
 		if Engine.is_editor_hint():
 			_update_stats()
+		else:
+			stats = stats.duplicate(true)
 
 var can_fire := true
 
@@ -62,6 +61,9 @@ func use() -> void:
 	print("Bullet spawned!")
 
 func _physics_process(_delta: float) -> void:
+	
+	if Engine.is_editor_hint():
+		return
 	
 	var action := "SHOOT_P" + str(player.stats.player_type+1)
 		

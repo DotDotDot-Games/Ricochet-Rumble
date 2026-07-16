@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d2fouiio2waih" path="res://assets/You-Died.png" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bwf0nunbwtwmx" path="res://assets/wall.png" id="2_yqjtg"]
 [ext_resource type="Resource" uid="uid://c2ma7k5aeo5xb" path="res://resources/players/player_2.tres" id="3_p57ef"]
-[ext_resource type="Resource" uid="uid://kxwethyru5ex" path="res://resources/bullets/base_bullet.tres" id="3_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://cqk0istnilb7a" path="res://content/items/weapons/pistol/pistol.tscn" id="3_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -26,15 +26,19 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [node name="Players" type="Node" parent="." unique_id=590383083]
 
-[node name="player1" parent="Players" unique_id=231532690 instance=ExtResource("1_uwrxv")]
+[node name="player1" parent="Players" unique_id=231532690 node_paths=PackedStringArray("weapon") instance=ExtResource("1_uwrxv")]
 position = Vector2(449, 329)
 stats = ExtResource("2_iywne")
-bullet_stat = ExtResource("3_u5sy4")
+weapon = NodePath("WeaponNode")
+
+[node name="WeaponNode" parent="Players/player1" unique_id=687440366 node_paths=PackedStringArray("bullets_container", "player") instance=ExtResource("3_u5sy4")]
+position = Vector2(-449, -329)
+bullets_container = NodePath("../../../Bullets")
+player = NodePath("..")
 
 [node name="player2" parent="Players" unique_id=1715600516 instance=ExtResource("1_uwrxv")]
 position = Vector2(734, 296)
 stats = ExtResource("3_p57ef")
-bullet_stat = ExtResource("3_u5sy4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=568506479]
 offset = Vector2(576, 324)

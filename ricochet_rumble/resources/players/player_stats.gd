@@ -1,9 +1,9 @@
-extends Resource
-class_name player_stats
+extends ShareableResource
+class_name PlayerStats
 
 enum Players{
-	PLAYER_1,
-	PLAYER_2
+	PLAYER_1 = 0,
+	PLAYER_2 = 1
 }
 
 @export var player_type : Players

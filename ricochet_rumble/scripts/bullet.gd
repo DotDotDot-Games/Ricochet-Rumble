@@ -1,31 +1,55 @@
+@tool
 extends CharacterBody2D
 
+class_name BulletNode
 
-var stats
+signal on_bounce
 
-var damage
-var speed
-var max_bounces
-func _ready() -> void:
-	set_up_variables()
+@export var stats: BulletStats
+@onready var sprite: Sprite2D = $Sprite2D
+
+static func generate(data: BulletStats) -> BulletNode:
 	
-func set_up_variables():
-	damage = stats.damage
-	speed = stats.speed
-	max_bounces = stats.max_bounces
+	var node: BulletNode = load(data.scene).instantiate()
+	
+	return node
+
+func _ready():
+	stats = stats.duplicate(true)
+	sprite.texture = stats.texture
+
 func _physics_process(delta: float) -> void:
+	
+	if Engine.is_editor_hint():
+		return
+	
 	# Add the gravity.
 	
-	var collision = move_and_collide(velocity)
+	var collision := move_and_collide(velocity*delta)
+	
 	if collision:
 		
+		var collider := collision.get_collider()
 		
-		velocity = velocity.bounce(collision.get_normal())
-		var collider = collision.get_collider()
-		
-		if collider.is_in_group("players"):
+		if collider.is_in_group("players") and can_damage():
 			collider.damage(stats.damage)
 			queue_free()
-		if max_bounces == 0:
-			queue_free()
-		max_bounces -= 1
+		else:
+			bounce(collision.get_normal())
+
+func bounce(collision: Vector2):
+	print("Bullet Bounced: ", stats.bounces.to_dict())
+	if stats.bounces.current_value == 0:
+		self.queue_free()
+		return
+	
+	stats.bounces.current_value -= 1
+	
+	var vel_bounce := velocity.bounce(collision)
+	rotation = vel_bounce.angle()
+	velocity = vel_bounce
+	
+	on_bounce.emit()
+
+func can_damage() -> bool:
+	return abs(stats.bounces.current_value - stats.bounces.max_value) >= 1

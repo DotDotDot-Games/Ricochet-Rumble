@@ -18,6 +18,7 @@ var facing := Vector2(1,0)
 #scenes
 @onready var UI = $"../../UI"
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var collision: CollisionShape2D = $CollisionShape2D
 
 func _ready():
 	sprite.self_modulate = stats.color
@@ -54,13 +55,19 @@ func kill():
 	#	child.visible = true
 	queue_free()
 
-func pick_up_weapon(data: WeaponData) -> void:
+func pick_up_item(data: ItemData) -> void:
+	
+	if data is WeaponData:
+		_pick_up_weapon(data)
+		return
+
+func _pick_up_weapon(data: WeaponData) -> void:
 	
 	var node: WeaponNode = WeaponNode.generate(data)
 	
-	self.weapon = node
-	
 	add_child(node)
+	
+	self.weapon = node
 
 func _setup_weapon() -> void:
 	
@@ -68,5 +75,10 @@ func _setup_weapon() -> void:
 		return
 	
 	weapon.player = self
-	weapon.global_position = self.global_position
+	
+	var shape := collision.shape
+	
+	if shape is RectangleShape2D:
+		weapon.global_position = self.global_position + Vector2(0, shape.size.y/2)
+		
 	print("Player Weapon: setted weapon on position ", self.global_position, " and now is: ", weapon.global_position)

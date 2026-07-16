@@ -109,6 +109,4 @@ func _remove_generated_item() -> void:
 func _on_pick_item(player: PlayerNode) -> void:
 	
 	var data := item.item_data
-	
-	if data is WeaponData:
-		player.pick_up_weapon(data)
+	player.pick_up_item(data)

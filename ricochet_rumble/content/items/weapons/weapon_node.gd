@@ -63,13 +63,16 @@ func use() -> void:
 	
 func _input(event: InputEvent) -> void:
 	
+	if not player:
+		return
+	
 	var action := "SHOOT_P" + str(player.stats.player_type+1)
 		
-	if _can_shoot(event, action):
+	if can_shoot(event, action):
 		use()
 		fire_cooldown.start()
 
-func _can_shoot(event: InputEvent, action: String) -> bool:
+func can_shoot(event: InputEvent, action: String) -> bool:
 	
 	if not can_fire:
 		return false

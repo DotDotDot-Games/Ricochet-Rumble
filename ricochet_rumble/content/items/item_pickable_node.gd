@@ -9,7 +9,7 @@ signal on_picked(player_who_pickup: PlayerNode)
 @export var info: ItemPickableData
 
 ## Define the time you need to stay still to grab the item
-@export var time_to_pickup := 0.5
+@export var time_to_pickup := 1.0
 
 ## Store the player IDs within the timers and track the time they remain stationary.
 var timers: Dictionary[PlayerNode, float] = {}

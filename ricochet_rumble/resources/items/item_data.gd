@@ -3,6 +3,11 @@ extends ShareableResource
 
 class_name ItemData
 
+enum Type {
+	WEAPON,
+	UPGRADE
+}
+
 ## Item id, is equal than the registry string_id
 @export var _id: String
 var id:
@@ -28,3 +33,6 @@ var id:
 
 ## Define if the item can spawn in spawners
 @export var spawneable := true
+
+## Define the type of the item (for the spawners)
+@export var type: Type

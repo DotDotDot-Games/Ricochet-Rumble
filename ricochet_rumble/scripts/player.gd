@@ -20,9 +20,10 @@ var moving
 var facing = Vector2(-1,0)
 #scenes
 @onready var UI = $"../../UI"
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _ready():
-	modulate = stats.color
+	sprite.self_modulate = stats.color
 	
 	
 func _physics_process(_delta: float) -> void:

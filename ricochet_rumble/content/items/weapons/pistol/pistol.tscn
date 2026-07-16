@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://lvdkcrh7sdjy"
 stats = SubResource("Resource_ivt4c")
 
 [node name="Muzzle" parent="." index="0" unique_id=762362007]
-position = Vector2(36, 0)
+position = Vector2(29, 0)
 
 [node name="Sprite" parent="." index="1" unique_id=1322059666]
 sprite_frames = SubResource("SpriteFrames_w10oy")

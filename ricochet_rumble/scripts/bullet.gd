@@ -18,14 +18,14 @@ func _ready():
 	stats = stats.duplicate(true)
 	sprite.texture = stats.texture
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if Engine.is_editor_hint():
 		return
 	
 	# Add the gravity.
 	
-	var collision := move_and_collide(velocity)
+	var collision := move_and_collide(velocity*delta)
 	
 	if collision:
 		

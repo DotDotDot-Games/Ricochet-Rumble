@@ -16,3 +16,8 @@ class_name WeaponData
 @export var bullets_per_shot := 1
 
 @export_file("*.tscn") var scene: String
+
+func _init():
+	
+	if not type:
+		type = Type.WEAPON

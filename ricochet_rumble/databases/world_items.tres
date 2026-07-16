@@ -2,6 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cet8eiqtw4hda" path="res://content/items/test_item/test_item.tres" id="1_8pirt"]
 [ext_resource type="Script" uid="uid://dqtv77mng5dyh" path="res://addons/yard/registry.gd" id="1_ujnec"]
+[ext_resource type="Resource" uid="uid://u3lwduj77lh8" path="res://content/items/weapons/pistol/pistol.tres" id="2_8pirt"]
 
 [resource]
 script = ExtResource("1_ujnec")
@@ -26,6 +27,9 @@ _property_index = Dictionary[StringName, Dictionary]({
 &"item_data": {
 ExtResource("1_8pirt"): {
 &"world_test_item": true
+},
+ExtResource("2_8pirt"): {
+&"world_pistol": true
 }
 }
 })

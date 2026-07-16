@@ -60,6 +60,12 @@ func _update_ids() -> void:
 
 func _can_spawn_item(data: ItemData):
 	
+	# TODO: Add only_tags and ignore_tags in filter
+	#var in_tags := true
+	
+	#if info.only_tags.size() > 0:
+		#in_tags = data.type in info.only_tags
+	
 	if info.only.size() > 0:
 		return data.id in info.only and data.spawneable
 	
@@ -81,7 +87,12 @@ func _on_timer_timeout() -> void:
 		_start_despawn()
 		
 		item = DATABASE.load_entry(IDS.pick_random())
-		generated_items.add_child(ItemPickableNode.generate(item.pickable_data))
+		
+		var node := ItemPickableNode.generate(item.pickable_data)
+		node.on_picked.connect(_on_pick_item)
+		node.global_position = self.global_position
+		
+		generated_items.add_child(node)
 		print("Spawned: ", item.to_dict())
 	else:
 		_remove_generated_item()
@@ -94,3 +105,10 @@ func _remove_generated_item() -> void:
 		
 		if child is ItemPickableNode:
 			child.queue_free()
+
+func _on_pick_item(player: PlayerNode) -> void:
+	
+	var data := item.item_data
+	
+	if data is WeaponData:
+		player.pick_up_weapon(data)

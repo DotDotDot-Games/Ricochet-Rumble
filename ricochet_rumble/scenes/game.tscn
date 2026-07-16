@@ -1,11 +1,37 @@
 [gd_scene format=3 uid="uid://b320cdrv11ivs"]
 
 [ext_resource type="PackedScene" uid="uid://b0mfit0aeajw0" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://v32ag50cdnjr" path="res://scripts/game_manager.gd" id="1_vtaks"]
 [ext_resource type="Resource" uid="uid://bfxn3hqso7c70" path="res://resources/players/player_1.tres" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://d2fouiio2waih" path="res://assets/You-Died.png" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bwf0nunbwtwmx" path="res://assets/wall.png" id="2_yqjtg"]
 [ext_resource type="Resource" uid="uid://c2ma7k5aeo5xb" path="res://resources/players/player_2.tres" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cqk0istnilb7a" path="res://content/items/weapons/pistol/pistol.tscn" id="3_u5sy4"]
+[ext_resource type="Resource" uid="uid://b4f4kfnqnmmwk" path="res://content/bullets/normal_bullet/normal_bullet.tres" id="4_0tnpc"]
+[ext_resource type="Script" uid="uid://lvdkcrh7sdjy" path="res://resources/items/weapons/weapon_data.gd" id="5_vtaks"]
+[ext_resource type="Texture2D" uid="uid://c4gktqa0ut2y" path="res://content/items/weapons/pistol/pistol.png" id="6_kvpfn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dinhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kvpfn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_kvuet"]
+script = ExtResource("5_vtaks")
+fire_rate = 0.3
+bullet = ExtResource("4_0tnpc")
+scene = "uid://cqk0istnilb7a"
+_id = "pistol"
+name = "Pistol"
+description = "A normal bounce pistol"
+texture = SubResource("SpriteFrames_dinhu")
+metadata/_custom_type_script = "uid://lvdkcrh7sdjy"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -24,6 +50,9 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [node name="Game" type="Node2D" unique_id=354940396]
 
+[node name="Game_Manager" type="Node" parent="." unique_id=1086733119]
+script = ExtResource("1_vtaks")
+
 [node name="Players" type="Node" parent="." unique_id=590383083]
 
 [node name="player1" parent="Players" unique_id=231532690 node_paths=PackedStringArray("weapon") instance=ExtResource("1_uwrxv")]
@@ -35,6 +64,7 @@ weapon = NodePath("WeaponNode")
 position = Vector2(-449, -329)
 bullets_container = NodePath("../../../Bullets")
 player = NodePath("..")
+stats = SubResource("Resource_kvuet")
 
 [node name="player2" parent="Players" unique_id=1715600516 instance=ExtResource("1_uwrxv")]
 position = Vector2(734, 296)

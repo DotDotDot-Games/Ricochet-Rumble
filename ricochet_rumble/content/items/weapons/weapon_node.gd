@@ -60,27 +60,26 @@ func use() -> void:
 	
 	bullets_container.add_child(bullet)
 	print("Bullet spawned!")
-	
-func _input(event: InputEvent) -> void:
-	
-	if not player:
-		return
+
+func _physics_process(_delta: float) -> void:
 	
 	var action := "SHOOT_P" + str(player.stats.player_type+1)
 		
-	if can_shoot(event, action):
+	if can_shoot(action):
 		use()
 		fire_cooldown.start()
 
-func can_shoot(event: InputEvent, action: String) -> bool:
+func can_shoot(action: String) -> bool:
 	
+	print("Input Shoot: can fire? ", can_fire)
 	if not can_fire:
 		return false
 	
+	print("Input Shoot: fire_cooldown = ", fire_cooldown.time_left)
 	if not fire_cooldown.is_stopped():
 		return false
 	
 	if stats.is_automatic:
-		return event.is_action(action)
+		return Input.is_action_pressed(action)
 	else:
-		return event.is_action_pressed(action)
+		return Input.is_action_just_pressed(action)

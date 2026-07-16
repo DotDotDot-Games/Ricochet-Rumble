@@ -37,7 +37,10 @@ func _process(delta: float) -> void:
 		return
 	
 	for player in timers:
-		if not player.moving:
+		
+		if player.moving:
+			timers[player] = time_to_pickup
+		else:
 			timers[player] -= delta
 		
 		if timers[player] <= 0:

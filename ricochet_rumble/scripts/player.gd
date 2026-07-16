@@ -79,6 +79,7 @@ func _setup_weapon() -> void:
 	var shape := collision.shape
 	
 	if shape is RectangleShape2D:
-		weapon.global_position = self.global_position + Vector2(0, shape.size.y/2)
+		weapon.global_position = self.global_position
+		weapon.position += Vector2(0, shape.size.y/2)
 		
 	print("Player Weapon: setted weapon on position ", self.global_position, " and now is: ", weapon.global_position)

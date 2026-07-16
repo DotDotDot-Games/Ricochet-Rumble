@@ -15,8 +15,10 @@ static func generate(data: BulletStats) -> BulletNode:
 	return node
 
 func _ready():
-	stats = stats.duplicate(true)
 	sprite.texture = stats.texture
+	
+	if not Engine.is_editor_hint():
+		stats = stats.duplicate(true)
 
 func _physics_process(delta: float) -> void:
 	

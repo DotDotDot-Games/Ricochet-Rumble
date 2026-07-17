@@ -26,10 +26,9 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [node name="Players" type="Node" parent="." unique_id=590383083]
 
-[node name="player1" parent="Players" unique_id=231532690 node_paths=PackedStringArray("weapon") instance=ExtResource("1_uwrxv")]
+[node name="player1" parent="Players" unique_id=231532690 instance=ExtResource("1_uwrxv")]
 position = Vector2(449, 329)
 stats = ExtResource("2_iywne")
-weapon = NodePath("")
 
 [node name="player2" parent="Players" unique_id=1715600516 instance=ExtResource("1_uwrxv")]
 position = Vector2(734, 296)
@@ -68,3 +67,6 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 1, 65536, 0, 65537, 6
 
 [node name="DefaultSpawner" parent="." unique_id=2032305051 instance=ExtResource("10_vtaks")]
 position = Vector2(144, 114)
+
+[node name="DefaultSpawner2" parent="." unique_id=34185315 instance=ExtResource("10_vtaks")]
+position = Vector2(962, 532)

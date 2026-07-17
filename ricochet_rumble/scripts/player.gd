@@ -67,6 +67,9 @@ func _pick_up_weapon(data: WeaponData) -> void:
 	
 	add_child(node)
 	
+	if weapon:
+		weapon.queue_free()
+	
 	self.weapon = node
 
 func _setup_weapon() -> void:
@@ -76,10 +79,6 @@ func _setup_weapon() -> void:
 	
 	weapon.player = self
 	
-	var shape := collision.shape
-	
-	if shape is RectangleShape2D:
-		weapon.global_position = self.global_position
-		weapon.position += Vector2(0, shape.size.y/2)
+	weapon.global_position = self.global_position
 		
 	print("Player Weapon: setted weapon on position ", self.global_position, " and now is: ", weapon.global_position)

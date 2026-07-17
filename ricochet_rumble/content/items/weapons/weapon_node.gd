@@ -19,7 +19,9 @@ class_name WeaponNode
 		
 		if Engine.is_editor_hint():
 			_update_stats()
-		else:
+			return
+			
+		if stats:
 			stats = stats.duplicate(true)
 
 var can_fire := true
@@ -52,13 +54,43 @@ func use() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	var bullet := BulletNode.generate(stats.bullet)
-	bullet.global_position = muzzle.global_position
-	bullet.global_rotation = muzzle.global_rotation
-	bullet.velocity = muzzle.global_transform.x * stats.bullet.speed
 	
-	bullets_container.add_child(bullet)
-	print("Bullet spawned!")
+	
+	for i in range(stats.bullets_per_shot):
+		
+		var bullet := BulletNode.generate(stats.bullet)
+		
+		var angle := _bullet_angle_spawn_method(i)
+		
+		_set_bullet_rotation(bullet, angle)
+		_set_bullet_velocity(bullet)
+		_set_bullet_spawn(bullet)
+		
+		if self.sprite.sprite_frames.has_animation("shooting"):
+			self.sprite.play("shooting")
+		
+		bullets_container.add_child(bullet)
+		print("Bullet spawned!")
+
+func _bullet_angle_spawn_method(idx: int) -> float:
+	
+	const spread := 30.0
+	
+	if stats.bullets_per_shot > 1:
+		return lerp(-spread/2.0, spread/2.0, float(idx)/float(stats.bullets_per_shot-1))
+	else:
+		return 0.0
+
+@warning_ignore("unused_parameter")
+func _set_bullet_spawn(bullet: BulletNode, idx := 0) -> void:
+	bullet.global_position = muzzle.global_position
+
+func _set_bullet_rotation(bullet: BulletNode, angle := 0.0) -> void:
+	bullet.global_rotation = muzzle.global_rotation + deg_to_rad(angle)
+
+@warning_ignore("unused_parameter")
+func _set_bullet_velocity(bullet: BulletNode, idx := 0) -> void:
+	bullet.velocity = Vector2.RIGHT.rotated(bullet.global_rotation) * stats.bullet.speed
 
 func _physics_process(_delta: float) -> void:
 	

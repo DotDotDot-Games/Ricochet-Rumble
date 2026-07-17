@@ -7,6 +7,6 @@ scale = Vector2(0.25, 0.25)
 collision_layer = 2
 script = ExtResource("1_p0qel")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=913342262]
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=99382734]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=913342262]

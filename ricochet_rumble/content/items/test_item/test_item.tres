@@ -7,4 +7,5 @@ script = ExtResource("1_u7o8t")
 _id = "test_item"
 name = "Test Item"
 description = "A test item"
+spawneable = false
 metadata/_custom_type_script = "uid://c70kuo0uu28aw"

@@ -14,14 +14,15 @@ class_name WeaponNode
 @export var player: PlayerNode
 @export var stats: WeaponData:
 	set(value):
-		
-		if value:
-			value = value.duplicate(true)
 			
 		stats = value
 		
 		if Engine.is_editor_hint():
 			_update_stats()
+			return
+			
+		if stats:
+			stats = stats.duplicate(true)
 
 var can_fire := true
 
@@ -53,31 +54,66 @@ func use() -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	var bullet := BulletNode.generate(stats.bullet)
+	
+	
+	for i in range(stats.bullets_per_shot):
+		
+		var bullet := BulletNode.generate(stats.bullet)
+		
+		var angle := _bullet_angle_spawn_method(i)
+		
+		_set_bullet_rotation(bullet, angle)
+		_set_bullet_velocity(bullet)
+		_set_bullet_spawn(bullet)
+		
+		if self.sprite.sprite_frames.has_animation("shooting"):
+			self.sprite.play("shooting")
+		
+		bullets_container.add_child(bullet)
+		print("Bullet spawned!")
+
+func _bullet_angle_spawn_method(idx: int) -> float:
+	
+	const spread := 30.0
+	
+	if stats.bullets_per_shot > 1:
+		return lerp(-spread/2.0, spread/2.0, float(idx)/float(stats.bullets_per_shot-1))
+	else:
+		return 0.0
+
+@warning_ignore("unused_parameter")
+func _set_bullet_spawn(bullet: BulletNode, idx := 0) -> void:
 	bullet.global_position = muzzle.global_position
-	bullet.global_rotation = muzzle.global_rotation
-	bullet.velocity = muzzle.global_transform.x * stats.bullet.speed
+
+func _set_bullet_rotation(bullet: BulletNode, angle := 0.0) -> void:
+	bullet.global_rotation = muzzle.global_rotation + deg_to_rad(angle)
+
+@warning_ignore("unused_parameter")
+func _set_bullet_velocity(bullet: BulletNode, idx := 0) -> void:
+	bullet.velocity = Vector2.RIGHT.rotated(bullet.global_rotation) * stats.bullet.speed
+
+func _physics_process(_delta: float) -> void:
 	
-	bullets_container.add_child(bullet)
-	print("Bullet spawned!")
-	
-func _input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
 	
 	var action := "SHOOT_P" + str(player.stats.player_type+1)
 		
-	if _can_shoot(event, action):
+	if can_shoot(action):
 		use()
 		fire_cooldown.start()
 
-func _can_shoot(event: InputEvent, action: String) -> bool:
+func can_shoot(action: String) -> bool:
 	
+	print("Input Shoot: can fire? ", can_fire)
 	if not can_fire:
 		return false
 	
+	print("Input Shoot: fire_cooldown = ", fire_cooldown.time_left)
 	if not fire_cooldown.is_stopped():
 		return false
 	
 	if stats.is_automatic:
-		return event.is_action(action)
+		return Input.is_action_pressed(action)
 	else:
-		return event.is_action_pressed(action)
+		return Input.is_action_just_pressed(action)

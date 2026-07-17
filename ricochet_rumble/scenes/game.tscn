@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b320cdrv11ivs"]
 
 [ext_resource type="PackedScene" uid="uid://b0mfit0aeajw0" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://v32ag50cdnjr" path="res://scripts/game_manager.gd" id="1_vtaks"]
 [ext_resource type="Resource" uid="uid://bfxn3hqso7c70" path="res://resources/players/player_1.tres" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://d2fouiio2waih" path="res://assets/You-Died.png" id="2_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://bwf0nunbwtwmx" path="res://assets/wall.png" id="2_yqjtg"]
@@ -23,6 +24,14 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 
 [node name="Game" type="Node2D" unique_id=354940396]
+
+[node name="Game_Manager" type="Node" parent="." unique_id=1086733119]
+script = ExtResource("1_vtaks")
+
+[node name="Items" type="Node" parent="." unique_id=751026930]
+
+[node name="upgrade_item" parent="Items" unique_id=1388160668 instance=ExtResource("8_kvpfn")]
+position = Vector2(149, 260)
 
 [node name="Players" type="Node" parent="." unique_id=590383083]
 

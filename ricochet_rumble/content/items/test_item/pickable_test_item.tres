@@ -2,11 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmgqv466nua6a" path="res://resources/items/item_pickable_data.gd" id="1_5g4dk"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_imloy"]
-size = Vector2(64, 64)
-
 [resource]
 script = ExtResource("1_5g4dk")
-texture = SubResource("PlaceholderTexture2D_imloy")
 scene = "uid://gorows5mn6h3"
 metadata/_custom_type_script = "uid://bmgqv466nua6a"

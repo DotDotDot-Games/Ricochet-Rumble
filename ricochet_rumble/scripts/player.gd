@@ -25,7 +25,6 @@ func _ready():
 	
 	
 func _physics_process(_delta: float) -> void:
-	#print(stats.health)
 	if stats.health <= 0:
 		kill()
 		
@@ -35,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 		direction = Input.get_vector("LEFT_P1", "RIGHT_P1", "UP_P1", "DOWN_P1")
 	else :
 		direction = Input.get_vector("LEFT_P2", "RIGHT_P2", "UP_P2", "DOWN_P2")
-		
+
 	if direction != Vector2.ZERO:
 		facing = direction.normalized()
 		moving = true
@@ -48,6 +47,7 @@ func _physics_process(_delta: float) -> void:
 
 func damage(value):
 	stats.health -= value
+	print(stats.health)
 	
 func kill():
 	#UI.visible = true

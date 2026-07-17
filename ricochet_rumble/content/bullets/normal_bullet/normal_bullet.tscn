@@ -1,19 +1,17 @@
 [gd_scene format=3 uid="uid://dqunn5e5st4hu"]
 
 [ext_resource type="PackedScene" uid="uid://b6qam0hoxbarb" path="res://content/bullets/bullet.tscn" id="1_vxjgd"]
-[ext_resource type="Resource" uid="uid://b4f4kfnqnmmwk" path="res://content/bullets/normal_bullet/normal_bullet.tres" id="2_3s4g2"]
+[ext_resource type="Resource" uid="uid://b4f4kfnqnmmwk" path="res://content/bullets/normal_bullet/normal_bullet.tres" id="2_tfcxq"]
+[ext_resource type="Texture2D" uid="uid://terkb632f070" path="res://assets/ball.png" id="4_yyb5e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oxhb"]
-size = Vector2(24, 24)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_y7n16"]
-size = Vector2(24, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_5oxhb"]
+radius = 16.0
 
 [node name="NormalBullet" unique_id=1132919546 instance=ExtResource("1_vxjgd")]
-stats = ExtResource("2_3s4g2")
+stats = ExtResource("2_tfcxq")
 
-[node name="CollisionShape2D" parent="." index="0" unique_id=913342262]
-shape = SubResource("RectangleShape2D_5oxhb")
+[node name="Sprite2D" parent="." index="0" unique_id=99382734]
+texture = ExtResource("4_yyb5e")
 
-[node name="Sprite2D" parent="." index="1" unique_id=99382734]
-texture = SubResource("PlaceholderTexture2D_y7n16")
+[node name="CollisionShape2D" parent="." index="1" unique_id=913342262]
+shape = SubResource("CircleShape2D_5oxhb")

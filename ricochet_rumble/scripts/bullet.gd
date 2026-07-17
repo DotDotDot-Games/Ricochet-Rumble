@@ -15,8 +15,10 @@ static func generate(data: BulletStats) -> BulletNode:
 	return node
 
 func _ready():
-	stats = stats.duplicate(true)
 	sprite.texture = stats.texture
+	
+	if not Engine.is_editor_hint():
+		stats = stats.duplicate(true)
 
 func _physics_process(delta: float) -> void:
 	
@@ -52,4 +54,4 @@ func bounce(collision: Vector2):
 	on_bounce.emit()
 
 func can_damage() -> bool:
-	return abs(stats.bounces.current_value - stats.bounces.max_value) >= 1
+	return stats.bounces.max_value - stats.bounces.current_value >= 1

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorldItemData" format=3 uid="uid://b3lhpy4j1m4yg"]
+
+[ext_resource type="Resource" uid="uid://cogbpa6jp48dw" path="res://content/items/weapons/shootgun/shootgun.tres" id="1_f3efv"]
+[ext_resource type="Script" uid="uid://ded7xfpydmriw" path="res://resources/items/world_item_data.gd" id="1_wmfr8"]
+[ext_resource type="Resource" uid="uid://btfi6rqtwhgwv" path="res://content/items/weapons/shootgun/pickable_shootgun.tres" id="2_87pn6"]
+
+[resource]
+script = ExtResource("1_wmfr8")
+id = "world_shootgun"
+item_data = ExtResource("1_f3efv")
+pickable_data = ExtResource("2_87pn6")
+metadata/_custom_type_script = "uid://ded7xfpydmriw"

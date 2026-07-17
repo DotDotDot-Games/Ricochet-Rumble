@@ -46,6 +46,7 @@ func _physics_process(_delta: float) -> void:
 
 func damage(value):
 	stats.health -= value
+	print(stats.health)
 	
 func kill():
 	#UI.visible = true

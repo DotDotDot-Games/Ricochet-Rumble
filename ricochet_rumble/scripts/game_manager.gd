@@ -1,14 +1,13 @@
 extends Node
 
-@onready var player1 = $"../Players/player1"
-var fire_rate = preload("res://content/items/upgrades/fire_rate.tres")
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
-func _input(event):
-	if event.is_action_pressed("TEST"):
-		fire_rate.apply(player1.get_node("WeaponNode"))
+@onready var item_node = $"../Items"
+var item_upgrade = preload("res://content/items/upgrades/item/upgrade_item.tscn")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _ready() -> void:
+	while true:
+		await get_tree().create_timer(1).timeout
+
+		var item_instance = item_upgrade.instantiate()
+		item_instance.global_position = Vector2(randf_range(60, 1100), randf_range(60, 600))
+		add_child(item_instance)

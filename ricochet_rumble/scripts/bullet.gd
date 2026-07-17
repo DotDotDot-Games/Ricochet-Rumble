@@ -36,7 +36,8 @@ func _physics_process(delta: float) -> void:
 			queue_free()
 		else:
 			bounce(collision.get_normal())
-
+func _update_stats():
+	pass
 func bounce(collision: Vector2):
 	print("Bullet Bounced: ", stats.bounces.to_dict())
 	if stats.bounces.current_value == 0:

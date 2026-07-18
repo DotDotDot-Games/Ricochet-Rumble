@@ -23,5 +23,6 @@ bullet = ExtResource("1_3nrca")
 scene = "uid://b81g1rpqg268a"
 _id = "sniper"
 name = "Sniper"
+icon = ExtResource("3_rrwn2")
 texture = SubResource("SpriteFrames_rrwn2")
 metadata/_custom_type_script = "uid://lvdkcrh7sdjy"

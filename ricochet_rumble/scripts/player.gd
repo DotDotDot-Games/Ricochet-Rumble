@@ -16,7 +16,6 @@ class_name PlayerNode
 var moving := false
 var facing := Vector2(1,0)
 #scenes
-@onready var UI = $"../../UI"
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 

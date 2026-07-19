@@ -29,15 +29,15 @@ var stat:
 func apply(node):
 	
 	if name in [UpgradeType.REGENERATION, UpgradeType.MORE_BULLETS,UpgradeType.FIRE_RATE]:
-		print("Before " + str(stat)+" ", node.stats[stat])
+		#print("Before " + str(stat)+" ", node.stats[stat])
 		node.stats[stat] += value
 		node._update_stats()
-		print("After " + str(stat)+" ", node.stats[stat])
+		#print("After " + str(stat)+" ", node.stats[stat])
 	elif name in [UpgradeType.BULLET_SPEED,UpgradeType.DAMAGE]:
-		print("Before " + str(stat)+" ", node.stats.bullet[stat])
+		#print("Before " + str(stat)+" ", node.stats.bullet[stat])
 		node.stats.bullet[stat] += value
-		print("After " + str(stat)+" ", node.stats.bullet[stat])
+		#print("After " + str(stat)+" ", node.stats.bullet[stat])
 	elif name in [UpgradeType.MORE_BOUNCES]:
-		print("Before " + str(stat)+" ", node.stats.bullet.bounces[stat])
+		#print("Before " + str(stat)+" ", node.stats.bullet.bounces[stat])
 		node.stats.bullet.bounces[stat] += value
-		print("After " + str(stat)+" ", node.stats.bullet.bounces[stat])
+		#wprint("After " + str(stat)+" ", node.stats.bullet.bounces[stat])

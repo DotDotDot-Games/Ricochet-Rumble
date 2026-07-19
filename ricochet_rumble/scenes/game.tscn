@@ -30,8 +30,7 @@ script = ExtResource("1_vtaks")
 
 [node name="Items" type="Node" parent="." unique_id=751026930]
 
-[node name="upgrade_item" parent="Items" unique_id=1388160668 instance=ExtResource("8_kvpfn")]
-position = Vector2(149, 260)
+
 
 [node name="Players" type="Node" parent="." unique_id=590383083]
 

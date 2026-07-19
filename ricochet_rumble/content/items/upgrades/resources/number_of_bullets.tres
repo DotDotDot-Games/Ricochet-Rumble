@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerUpgrades2" format=3 uid="uid://coly714afu2cv"]
+[gd_resource type="Resource" script_class="PlayerUpgrades" format=3 uid="uid://coly714afu2cv"]
 
 [ext_resource type="Script" uid="uid://723gwlju5dpf" path="res://content/items/upgrades/resources/player_upgrades.gd" id="1_6fvyi"]
 

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bgt1ruqa1hsnj"]
+
+[ext_resource type="Script" uid="uid://d4jnyg8vdiogg" path="res://scripts/preview_getter.gd" id="1_m02ay"]
+[ext_resource type="PackedScene" uid="uid://doabavu28owyx" path="res://test/game_copy.tscn" id="2_0byna"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m02ay"]
+viewport_path = NodePath("CenterContainer/HBoxContainer/SubViewport")
+
+[node name="MapSelector" type="Control" unique_id=875437048]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=143353389]
+layout_mode = 1
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=1287655719]
+layout_mode = 2
+text = "Return"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=560147301]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=1489552591]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer" unique_id=706521575 node_paths=PackedStringArray("sub_viewport")]
+layout_mode = 2
+texture = SubResource("ViewportTexture_m02ay")
+script = ExtResource("1_m02ay")
+sub_viewport = NodePath("../SubViewport")
+
+[node name="SubViewport" type="SubViewport" parent="CenterContainer/HBoxContainer" unique_id=38707910]
+
+[node name="Camera2D" type="Camera2D" parent="CenterContainer/HBoxContainer/SubViewport" unique_id=1982228418]
+
+[node name="Game" parent="CenterContainer/HBoxContainer/SubViewport" unique_id=354940396 instance=ExtResource("2_0byna")]

@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://e4tx2w3lqau"]
+
+[ext_resource type="Texture2D" uid="uid://rxxo82wxn3ch" path="res://assets/buttons/ both_background.png" id="1_cmaup"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rm2qm"]
+texture = ExtResource("1_cmaup")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_125ao"]
+texture = ExtResource("1_cmaup")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cmaup"]
+texture = ExtResource("1_cmaup")
+modulate_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+
+[resource]
+Button/constants/outline_size = 2
+Button/styles/hover = SubResource("StyleBoxTexture_rm2qm")
+Button/styles/normal = SubResource("StyleBoxTexture_125ao")
+Button/styles/pressed = SubResource("StyleBoxTexture_cmaup")

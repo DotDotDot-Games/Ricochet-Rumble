@@ -1,16 +1,29 @@
+@tool
 extends Node2D
 
 class_name GameNode
 
+@export var map_spawner: SubViewport
 @export var players: Array[PlayerNode] = []
 @onready var win_menu: WinMenu = $CanvasLayer/WinMenu
 @onready var pause_menu: PauseMenu = $CanvasLayer/PauseMenu
 var _can_pause := true
 
+static func start(map: PackedScene) -> GameNode:
+	
+	var scene: GameNode = load("res://test/game_copy.tscn").instantiate()
+	
+	scene.map_spawner.add_child(map.instantiate())
+	
+	return scene
+
 func _ready():
 	print("Game Node: players = ", players)
 	var world: World2D = $CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport.find_world_2d()
 	$CanvasLayer2/HBoxContainer/SubViewportContainer2/SubViewport.world_2d = world
+	
+	if Engine.is_editor_hint():
+		return
 	
 	players.sort_custom(Callable(self, _sort_by_id.get_method()))
 	

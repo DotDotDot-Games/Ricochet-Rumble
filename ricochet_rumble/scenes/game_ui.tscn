@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c570ygul6f2k6"]
+
+[ext_resource type="Script" uid="uid://dm1616676x2di" path="res://scripts/health_bar.gd" id="1_u001w"]
+[ext_resource type="PackedScene" uid="uid://drxfbagrifydc" path="res://scripts/ui/weapons/weapon_icon.tscn" id="2_u2dgd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3381y"]
+bg_color = Color(0.46050733, 0, 0.03949087, 0.36078432)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pv2d"]
+bg_color = Color(0, 0.719452, 0.34379056, 1)
+
+[node name="UI" type="Control" unique_id=1168606830]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1415216984]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 92.0
+
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer" unique_id=2016829137]
+custom_minimum_size = Vector2(256, 24)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3381y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6pv2d")
+step = 1.0
+value = 67.0
+script = ExtResource("1_u001w")
+
+[node name="WeaponLeft" parent="VBoxContainer" unique_id=925478548 instance=ExtResource("2_u2dgd")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=25138488]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 91.0
+grow_horizontal = 0
+
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer2" unique_id=39247844]
+custom_minimum_size = Vector2(256, 24)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3381y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6pv2d")
+step = 1.0
+value = 67.0
+script = ExtResource("1_u001w")
+
+[node name="WeaponIcon" parent="VBoxContainer2" unique_id=1202394297 instance=ExtResource("2_u2dgd")]
+layout_mode = 2

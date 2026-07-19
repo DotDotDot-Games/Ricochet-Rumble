@@ -6,61 +6,9 @@
 [ext_resource type="Resource" uid="uid://bfxn3hqso7c70" path="res://resources/players/player_1.tres" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://bwf0nunbwtwmx" path="res://assets/wall.png" id="2_yqjtg"]
 [ext_resource type="Resource" uid="uid://c2ma7k5aeo5xb" path="res://resources/players/player_2.tres" id="3_p57ef"]
-<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://cl7ggk1emy10f" path="res://content/items/upgrades/item/upgrade_item.tscn" id="8_gee14"]
 [ext_resource type="Resource" uid="uid://bprdk62npwcs4" path="res://content/items/upgrades/resources/fire_rate.tres" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://b3llmy8gajktt" path="res://content/item_spawners/default_spawner/default_spawner.tscn" id="10_vtaks"]
-=======
-[ext_resource type="PackedScene" uid="uid://cqk0istnilb7a" path="res://content/items/weapons/pistol/pistol.tscn" id="3_u5sy4"]
-[ext_resource type="Resource" uid="uid://b4f4kfnqnmmwk" path="res://content/bullets/normal_bullet/normal_bullet.tres" id="4_0tnpc"]
-[ext_resource type="Script" uid="uid://lvdkcrh7sdjy" path="res://resources/items/weapons/weapon_data.gd" id="5_vtaks"]
-[ext_resource type="Texture2D" uid="uid://c4gktqa0ut2y" path="res://content/items/weapons/pistol/pistol.png" id="6_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://d0weflsmg8nkw" path="res://content/items/weapons/weapon_node.tscn" id="7_dinhu"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_kvuet"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_kvpfn")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_trtic"]
-script = ExtResource("5_vtaks")
-fire_rate = 1.0
-bullet = ExtResource("4_0tnpc")
-scene = "uid://cqk0istnilb7a"
-_id = "pistol"
-name = "Pistol"
-description = "A normal bounce pistol"
-texture = SubResource("SpriteFrames_kvuet")
-metadata/_custom_type_script = "uid://lvdkcrh7sdjy"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0tnpc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_kvpfn")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_vtaks"]
-script = ExtResource("5_vtaks")
-fire_rate = 0.5
-bullet = ExtResource("4_0tnpc")
-scene = "uid://cqk0istnilb7a"
-_id = "pistol"
-name = "Pistol"
-description = "A normal bounce pistol"
-texture = SubResource("SpriteFrames_0tnpc")
-metadata/_custom_type_script = "uid://lvdkcrh7sdjy"
->>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_yqjtg")
@@ -105,29 +53,10 @@ upgrade = ExtResource("9_0tnpc")
 [node name="player1" parent="Players" unique_id=231532690 instance=ExtResource("1_uwrxv")]
 position = Vector2(527, 589)
 stats = ExtResource("2_iywne")
-<<<<<<< Updated upstream
 
 [node name="player2" parent="Players" unique_id=1715600516 instance=ExtResource("1_uwrxv")]
 position = Vector2(545, 78)
-=======
-weapon = NodePath("WeaponNode")
-
-[node name="WeaponNode" parent="Players/player1" unique_id=687440366 node_paths=PackedStringArray("bullets_container", "player") instance=ExtResource("3_u5sy4")]
-position = Vector2(-449, -329)
-bullets_container = NodePath("../../../Bullets")
-player = NodePath("..")
-stats = SubResource("Resource_trtic")
-
-[node name="player2" parent="Players" unique_id=1715600516 node_paths=PackedStringArray("weapon") instance=ExtResource("1_uwrxv")]
-position = Vector2(734, 296)
->>>>>>> Stashed changes
 stats = ExtResource("3_p57ef")
-weapon = NodePath("WeaponNode")
-
-[node name="WeaponNode" parent="Players/player2" unique_id=1393403238 node_paths=PackedStringArray("bullets_container", "player") instance=ExtResource("7_dinhu")]
-bullets_container = NodePath("../../../Bullets")
-player = NodePath("..")
-stats = SubResource("Resource_vtaks")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=568506479]
 offset = Vector2(576, 324)

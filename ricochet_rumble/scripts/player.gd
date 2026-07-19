@@ -23,7 +23,7 @@ var facing := Vector2(1,0)
 func _ready():
 	sprite.self_modulate = stats.color
 	
-	
+
 func _physics_process(_delta: float) -> void:
 	if stats.health <= 0:
 		kill()

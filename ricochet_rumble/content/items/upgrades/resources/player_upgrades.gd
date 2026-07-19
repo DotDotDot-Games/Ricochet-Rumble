@@ -8,7 +8,8 @@ enum UpgradeType {
 	BULLET_SPEED,
 	FIRE_RATE,
 	MORE_BOUNCES,
-	DAMAGE
+	DAMAGE,
+	SPEED
 }
 var dict = {
 	UpgradeType.REGENERATION: "regeneration",
@@ -17,7 +18,8 @@ var dict = {
 	UpgradeType.MORE_BULLETS: "bullets_per_shot",
 	UpgradeType.BULLET_SPEED: "speed",
 	UpgradeType.FIRE_RATE: "fire_rate",
-	UpgradeType.MORE_BOUNCES: "_current_value"
+	UpgradeType.MORE_BOUNCES: "_current_value",
+	UpgradeType.SPEED: "speed"
 }
 @export var name : UpgradeType
 @export var type : UpgradeType
@@ -28,7 +30,7 @@ var stat:
 		 
 func apply(node):
 	
-	if name in [UpgradeType.REGENERATION, UpgradeType.MORE_BULLETS,UpgradeType.FIRE_RATE]:
+	if name in [UpgradeType.REGENERATION, UpgradeType.MORE_BULLETS,UpgradeType.FIRE_RATE,UpgradeType.SPEED]:
 		#print("Before " + str(stat)+" ", node.stats[stat])
 		node.stats[stat] += value
 		node._update_stats()

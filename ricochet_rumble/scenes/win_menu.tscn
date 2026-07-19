@@ -65,5 +65,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_xtbbn")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w75pu")
 text = "Return to main menu"
 script = ExtResource("2_jx1is")
-scene_dir = "uid://bgt1ruqa1hsnj"
+scene_dir = "uid://dpd73sfwlrk0j"
 metadata/_custom_type_script = "uid://dw2w5x7mwady8"

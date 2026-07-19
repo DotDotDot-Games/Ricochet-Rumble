@@ -121,7 +121,7 @@ color = Color(0.16459775, 0.247679, 1, 1)
 z_index = -10
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.44850355, 0.9138041, 0.2748028, 1)
+color = Color(0.44705883, 0.9137255, 0.27450982, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="VSeparator" type="VSeparator" parent="CanvasLayer2/HBoxContainer" unique_id=1684758237]

@@ -14,8 +14,14 @@ modulate_color = Color(0, 0.007843138, 1, 1)
 texture = ExtResource("1_jl1br")
 modulate_color = Color(0, 0.003921747, 0.5, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fqay2"]
+texture = ExtResource("1_jl1br")
+modulate_color = Color(1, 0, 0.015686275, 1)
+
 [resource]
 Button/constants/outline_size = 2
 Button/styles/hover = SubResource("StyleBoxTexture_55fxh")
 Button/styles/normal = SubResource("StyleBoxTexture_5iht2")
 Button/styles/pressed = SubResource("StyleBoxTexture_dix1m")
+Label/colors/font_color = Color(0, 0.007843138, 1, 1)
+Label/styles/normal = SubResource("StyleBoxTexture_fqay2")

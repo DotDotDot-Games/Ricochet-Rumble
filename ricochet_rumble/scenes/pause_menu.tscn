@@ -36,7 +36,7 @@ texture = ExtResource("7_1s2dm")
 texture_margin_left = 4.0
 texture_margin_right = 4.0
 
-[node name="PauseMenu" type="CenterContainer" unique_id=1592771618]
+[node name="PauseMenu" type="CenterContainer" unique_id=1592771618 node_paths=PackedStringArray("restart")]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,6 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kukqi")
+restart = NodePath("Panel/VBoxContainer/VBoxContainer/HBoxContainer/Restart")
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=2108908568]
 layout_mode = 2
@@ -71,14 +72,11 @@ theme = ExtResource("4_7l7mv")
 text = "Resume"
 script = ExtResource("1_myx47")
 
-[node name="Restart" type="Button" parent="Panel/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1988418638]
+[node name="Restart" type="Button" parent="Panel/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1222228637]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_5d2l8")
 text = "Restart"
-script = ExtResource("2_kukqi")
-scene_dir = "uid://b320cdrv11ivs"
-metadata/_custom_type_script = "uid://dw2w5x7mwady8"
 
 [node name="Return" type="Button" parent="Panel/VBoxContainer/VBoxContainer" unique_id=1221536928]
 layout_mode = 2
@@ -88,4 +86,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_1s2dm")
 theme_override_styles/hover = SubResource("StyleBoxTexture_knqa7")
 text = "Return To Main Menu"
 script = ExtResource("2_kukqi")
+scene_dir = "uid://bgt1ruqa1hsnj"
 metadata/_custom_type_script = "uid://dw2w5x7mwady8"

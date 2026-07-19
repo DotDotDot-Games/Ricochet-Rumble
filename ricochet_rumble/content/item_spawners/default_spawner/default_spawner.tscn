@@ -44,5 +44,6 @@ texture = SubResource("SpriteFrames_8d8m2")
 metadata/_custom_type_script = "uid://c8yemeqj0xdjs"
 
 [node name="DefaultSpawner" unique_id=2032305051 instance=ExtResource("1_ryh7k")]
+z_index = -1
 sprite_frames = SubResource("SpriteFrames_8d8m2")
 info = SubResource("Resource_mmrce")

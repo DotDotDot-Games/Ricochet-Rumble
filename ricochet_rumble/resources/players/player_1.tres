@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dvwrcysmerik0" path="res://resources/players/player_stats.gd" id="1_w3cjl"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_w3cjl")
 health = 100.0
 speed = 160.0

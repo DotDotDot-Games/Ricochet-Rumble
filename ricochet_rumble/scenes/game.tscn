@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://dvp1u4848a5bx"]
+
+[ext_resource type="Script" uid="uid://dxmo0acb0o7gu" path="res://scripts/game_node.gd" id="1_oif8q"]
+[ext_resource type="PackedScene" uid="uid://c570ygul6f2k6" path="res://scenes/game_ui.tscn" id="2_371dm"]
+[ext_resource type="Script" uid="uid://cjxdpmmllixjb" path="res://components/resources/show_property/show_property_node_data.gd" id="3_p6h2q"]
+[ext_resource type="PackedScene" uid="uid://bwbkgkmxyvfrj" path="res://scenes/win_menu.tscn" id="4_jxwjh"]
+[ext_resource type="PackedScene" uid="uid://ca4jeh28p6ebe" path="res://scenes/pause_menu.tscn" id="5_txhom"]
+[ext_resource type="PackedScene" uid="uid://b0mfit0aeajw0" path="res://scenes/player.tscn" id="6_tx0w8"]
+[ext_resource type="Script" uid="uid://dvwrcysmerik0" path="res://resources/players/player_stats.gd" id="7_u5sy4"]
+
+[sub_resource type="Resource" id="Resource_yqip0"]
+script = ExtResource("3_p6h2q")
+node = NodePath("../../../../CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport/player1")
+properties = Dictionary[StringName, Array]({
+&"_set_modulate": ["weapon:fire_cooldown"],
+&"_set_texture": ["weapon:stats:icon"]
+})
+metadata/_custom_type_script = "uid://cjxdpmmllixjb"
+
+[sub_resource type="Resource" id="Resource_bq52r"]
+script = ExtResource("3_p6h2q")
+node = NodePath("../../../../CanvasLayer2/HBoxContainer/SubViewportContainer2/SubViewport/player2")
+properties = Dictionary[StringName, Array]({
+&"_set_modulate": ["weapon:fire_cooldown"],
+&"_set_texture": ["weapon:stats:icon"]
+})
+metadata/_custom_type_script = "uid://cjxdpmmllixjb"
+
+[sub_resource type="Resource" id="Resource_u5sy4"]
+resource_local_to_scene = true
+script = ExtResource("7_u5sy4")
+health = 100.0
+speed = 160.0
+color = Color(0, 0, 1, 1)
+metadata/_custom_type_script = "uid://dvwrcysmerik0"
+
+[sub_resource type="Resource" id="Resource_gee14"]
+resource_local_to_scene = true
+script = ExtResource("7_u5sy4")
+player_type = 1
+health = 100.0
+speed = 160.0
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://dvwrcysmerik0"
+
+[node name="Game" type="Node2D" unique_id=354940396 node_paths=PackedStringArray("map_spawner", "players", "win_menu", "pause_menu")]
+script = ExtResource("1_oif8q")
+map_spawner = NodePath("CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport")
+players = [NodePath("CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport/player1"), NodePath("CanvasLayer2/HBoxContainer/SubViewportContainer2/SubViewport/player2")]
+win_menu = NodePath("CanvasLayer/WinMenu")
+pause_menu = NodePath("CanvasLayer/PauseMenu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1907951430]
+layer = 100
+
+[node name="UI" parent="CanvasLayer" unique_id=1168606830 instance=ExtResource("2_371dm")]
+
+[node name="HealthBar" parent="CanvasLayer/UI/VBoxContainer" parent_id_path=PackedInt32Array(1168606830, 1415216984) index="0" unique_id=2016829137 node_paths=PackedStringArray("player_node")]
+player_node = NodePath("../../../../CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport/player1")
+
+[node name="WeaponLeft" parent="CanvasLayer/UI/VBoxContainer" parent_id_path=PackedInt32Array(1168606830, 1415216984) index="1" unique_id=925478548]
+data = SubResource("Resource_yqip0")
+
+[node name="HealthBar" parent="CanvasLayer/UI/VBoxContainer2" parent_id_path=PackedInt32Array(1168606830, 25138488) index="0" unique_id=39247844 node_paths=PackedStringArray("player_node")]
+player_node = NodePath("../../../../CanvasLayer2/HBoxContainer/SubViewportContainer2/SubViewport/player2")
+
+[node name="WeaponIcon" parent="CanvasLayer/UI/VBoxContainer2" parent_id_path=PackedInt32Array(1168606830, 25138488) index="1" unique_id=1202394297]
+data = SubResource("Resource_bq52r")
+
+[node name="WinMenu" parent="CanvasLayer" unique_id=143164094 instance=ExtResource("4_jxwjh")]
+visible = false
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1592771618 instance=ExtResource("5_txhom")]
+visible = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=451476758]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2" unique_id=1942294896]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer2/HBoxContainer" unique_id=35015844]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer2/HBoxContainer/SubViewportContainer" unique_id=281680024]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(576, 648)
+render_target_update_mode = 4
+
+[node name="player1" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport" unique_id=231532690 instance=ExtResource("6_tx0w8")]
+z_index = 1
+position = Vector2(300, 300)
+stats = SubResource("Resource_u5sy4")
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport/player1" unique_id=1780621566]
+
+[node name="Game_Manager" type="Node" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport" unique_id=1086733119]
+
+[node name="Items" type="Node" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport" unique_id=751026930]
+
+[node name="Bullets" type="Node" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport" unique_id=975566238]
+
+[node name="Background" type="Node" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport" unique_id=63043914]
+
+[node name="Water" type="ColorRect" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport/Background" unique_id=1021254363]
+z_index = -100
+offset_left = -974.0
+offset_top = -627.0
+offset_right = 2095.0
+offset_bottom = 1284.0
+color = Color(0.16459775, 0.247679, 1, 1)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/HBoxContainer/SubViewportContainer/SubViewport/Background" unique_id=675071549]
+z_index = -10
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.44705883, 0.9137255, 0.27450982, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer2/HBoxContainer" unique_id=1684758237]
+z_index = 100
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer2/HBoxContainer" unique_id=596241199]
+layout_mode = 2
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer2/HBoxContainer/SubViewportContainer2" unique_id=1291097867]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(576, 648)
+render_target_update_mode = 4
+
+[node name="player2" parent="CanvasLayer2/HBoxContainer/SubViewportContainer2/SubViewport" unique_id=1715600516 instance=ExtResource("6_tx0w8")]
+z_index = 1
+position = Vector2(700, 300)
+stats = SubResource("Resource_gee14")
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer2/HBoxContainer/SubViewportContainer2/SubViewport/player2" unique_id=1311949437]
+
+[editable path="CanvasLayer/UI"]

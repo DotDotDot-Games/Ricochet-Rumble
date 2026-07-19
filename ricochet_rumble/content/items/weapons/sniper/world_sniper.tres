@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WorldItemData" format=3 uid="uid://cu7v7vw26cn8c"]
+
+[ext_resource type="Script" uid="uid://ded7xfpydmriw" path="res://resources/items/world_item_data.gd" id="1_8fisb"]
+[ext_resource type="Resource" uid="uid://b3mtqkvbkkagg" path="res://content/items/weapons/sniper/sniper.tres" id="1_o12j1"]
+[ext_resource type="Resource" uid="uid://c5683oi652d60" path="res://content/items/weapons/sniper/pickable_sniper.tres" id="2_kwugr"]
+
+[resource]
+script = ExtResource("1_8fisb")
+id = "world_sniper"
+item_data = ExtResource("1_o12j1")
+pickable_data = ExtResource("2_kwugr")
+metadata/_custom_type_script = "uid://ded7xfpydmriw"

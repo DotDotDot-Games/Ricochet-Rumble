@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b3llmy8gajktt"]
+
+[ext_resource type="PackedScene" uid="uid://cgldot81dekh3" path="res://content/item_spawners/item_spawner_node.tscn" id="1_ryh7k"]
+[ext_resource type="Script" uid="uid://c8yemeqj0xdjs" path="res://resources/item_spawner_data.gd" id="2_qvgxs"]
+[ext_resource type="Texture2D" uid="uid://b0clrjs1mkw4l" path="res://content/item_spawners/default_spawner/default_spawner.png" id="3_kd4ow"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uper6"]
+atlas = ExtResource("3_kd4ow")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk8ha"]
+atlas = ExtResource("3_kd4ow")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h267j"]
+atlas = ExtResource("3_kd4ow")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8d8m2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uper6")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk8ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h267j")
+}],
+"loop": 1,
+"name": &"spawning",
+"speed": 2.0
+}]
+
+[sub_resource type="Resource" id="Resource_mmrce"]
+script = ExtResource("2_qvgxs")
+texture = SubResource("SpriteFrames_8d8m2")
+metadata/_custom_type_script = "uid://c8yemeqj0xdjs"
+
+[node name="DefaultSpawner" unique_id=2032305051 instance=ExtResource("1_ryh7k")]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_8d8m2")
+info = SubResource("Resource_mmrce")

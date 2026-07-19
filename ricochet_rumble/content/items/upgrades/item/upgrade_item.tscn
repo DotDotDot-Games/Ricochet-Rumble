@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cl7ggk1emy10f"]
+
+[ext_resource type="Texture2D" uid="uid://kffvxy7l3j2w" path="res://content/items/upgrades/item/New Piskel (3).png" id="1_roxj2"]
+[ext_resource type="Script" uid="uid://bix74lebq00rl" path="res://content/items/upgrades/item/upgrade_item.gd" id="2_dqsuh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3381y"]
+size = Vector2(32, 32)
+
+[node name="upgrade_item" type="Sprite2D" unique_id=1388160668]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_roxj2")
+script = ExtResource("2_dqsuh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=453586291]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=973461013]
+shape = SubResource("RectangleShape2D_3381y")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

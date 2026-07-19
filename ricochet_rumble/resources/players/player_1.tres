@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://bfxn3hqso7c70"]
+
+[ext_resource type="Script" uid="uid://dvwrcysmerik0" path="res://resources/players/player_stats.gd" id="1_w3cjl"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_w3cjl")
+health = 100.0
+speed = 160.0
+color = Color(0, 0, 1, 1)
+metadata/_custom_type_script = "uid://dvwrcysmerik0"

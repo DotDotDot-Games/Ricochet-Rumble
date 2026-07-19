@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerUpgrades" format=3 uid="uid://boqdlk82r03m6"]
+
+[ext_resource type="Script" uid="uid://723gwlju5dpf" path="res://content/items/upgrades/resources/player_upgrades.gd" id="1_4nxh1"]
+
+[resource]
+script = ExtResource("1_4nxh1")
+name = 8
+type = 8
+metadata/_custom_type_script = "uid://723gwlju5dpf"

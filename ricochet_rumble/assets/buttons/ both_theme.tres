@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://clkgnfiji72nc"]
+
+[ext_resource type="Texture2D" uid="uid://c85un0p53lk0m" path="res://assets/buttons/ both_background_inverted.png" id="1_g0ev8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g0ev8"]
+texture = ExtResource("1_g0ev8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n0giv"]
+texture = ExtResource("1_g0ev8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8hvk5"]
+texture = ExtResource("1_g0ev8")
+modulate_color = Color(0.30928105, 0.30928105, 0.30928105, 1)
+
+[resource]
+Button/constants/outline_size = 2
+Button/styles/hover = SubResource("StyleBoxTexture_g0ev8")
+Button/styles/normal = SubResource("StyleBoxTexture_n0giv")
+Button/styles/pressed = SubResource("StyleBoxTexture_8hvk5")

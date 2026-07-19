@@ -1,0 +1,29 @@
+[gd_resource type="Theme" format=3 uid="uid://mc41ygadj5oy"]
+
+[ext_resource type="Texture2D" uid="uid://dxlg6j6cxu28b" path="res://assets/buttons/default_background.png" id="1_1o8r5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dmnvd"]
+texture = ExtResource("1_1o8r5")
+modulate_color = Color(1, 0.48027045, 0.48842293, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f1xa8"]
+texture = ExtResource("1_1o8r5")
+modulate_color = Color(1, 0, 0.015686275, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o8p4o"]
+texture = ExtResource("1_1o8r5")
+modulate_color = Color(0.39477575, 0, 0.0061924662, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g04yl"]
+texture = ExtResource("1_1o8r5")
+texture_margin_left = 4.0
+modulate_color = Color(0, 0.007843138, 1, 1)
+
+[resource]
+Button/constants/outline_size = 2
+Button/styles/hover = SubResource("StyleBoxTexture_dmnvd")
+Button/styles/normal = SubResource("StyleBoxTexture_f1xa8")
+Button/styles/pressed = SubResource("StyleBoxTexture_o8p4o")
+Label/colors/font_color = Color(0.79607844, 0, 0.011764706, 1)
+Label/constants/outline_size = 0
+Label/styles/normal = SubResource("StyleBoxTexture_g04yl")

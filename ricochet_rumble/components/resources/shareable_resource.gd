@@ -98,6 +98,9 @@ func is_custom_property(property_name: StringName) -> bool:
 
 func get_custom_properties_values(deep := true) -> Dictionary[String, Variant]:
 	
+	if Engine.is_editor_hint():
+		return {}
+	
 	var values: Dictionary[String, Variant] = {}
 	
 	for prop in self.get_custom_properties_names():

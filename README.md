@@ -1,9 +1,6 @@
 # Ricochet-Rumble
-A 2-player shooter game with a retro aesthetic
 
-# Ricochet Rumble
-
-Ricochet Rumble is a shooter game unlike the rest. You have to bounce your bullets to kill your opponent!
+Ricochet Rumble is 2-player a shooter game with a retro aesthetic unlike the rest. You have to bounce your bullets to kill your opponent!
 
 In other words, if you shoot directly at them, the bullets will bounce back toward you!
 

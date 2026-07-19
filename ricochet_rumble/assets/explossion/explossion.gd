@@ -7,7 +7,7 @@ class_name ExplossionNode
 
 static func generate() -> ExplossionNode:
 	
-	var node := preload("res://assets/explossion/explossion.tscn").instantiate()
+	var node: ExplossionNode = load("res://assets/explossion/explossion.tscn").instantiate()
 	return node
 
 # Called when the node enters the scene tree for the first time.

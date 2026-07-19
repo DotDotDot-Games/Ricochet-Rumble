@@ -5,6 +5,15 @@
 [ext_resource type="Script" uid="uid://v32ag50cdnjr" path="res://scripts/game_manager.gd" id="1_vtaks"]
 [ext_resource type="Script" uid="uid://cjxdpmmllixjb" path="res://components/resources/show_property/show_property_node_data.gd" id="2_dinhu"]
 [ext_resource type="Resource" uid="uid://bfxn3hqso7c70" path="res://resources/players/player_1.tres" id="2_iywne"]
+[ext_resource type="Texture2D" uid="uid://d2fouiio2waih" path="res://assets/You-Died.png" id="2_lnu2h"]
+[ext_resource type="Resource" uid="uid://c2ma7k5aeo5xb" path="res://resources/players/player_2.tres" id="3_p57ef"]
+[ext_resource type="Script" uid="uid://dm1616676x2di" path="res://scripts/health_bar.gd" id="5_gee14"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3381y"]
+bg_color = Color(0.46050733, 0, 0.03949087, 0.36078432)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pv2d"]
+bg_color = Color(0, 0.719452, 0.34379056, 1)
 [ext_resource type="Texture2D" uid="uid://bwf0nunbwtwmx" path="res://assets/wall.png" id="2_yqjtg"]
 [ext_resource type="Resource" uid="uid://c2ma7k5aeo5xb" path="res://resources/players/player_2.tres" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cl7ggk1emy10f" path="res://content/items/upgrades/item/upgrade_item.tscn" id="8_gee14"]
@@ -93,11 +102,11 @@ upgrade = ExtResource("9_0tnpc")
 [node name="Players" type="Node" parent="." unique_id=590383083]
 
 [node name="player1" parent="Players" unique_id=231532690 instance=ExtResource("1_uwrxv")]
-position = Vector2(449, 329)
+position = Vector2(527, 589)
 stats = ExtResource("2_iywne")
 
 [node name="player2" parent="Players" unique_id=1715600516 instance=ExtResource("1_uwrxv")]
-position = Vector2(734, 296)
+position = Vector2(545, 78)
 stats = ExtResource("3_p57ef")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=568506479]
@@ -105,14 +114,55 @@ offset = Vector2(576, 324)
 
 [node name="Bullets" type="Node" parent="." unique_id=975566238]
 
-[node name="Background" type="Node" parent="." unique_id=63043914]
+[node name="HealthBars" type="Node" parent="." unique_id=1231590396]
 
-[node name="ColorRect" type="ColorRect" parent="Background" unique_id=675071549]
-z_index = -10
+[node name="HealthBar" type="ProgressBar" parent="HealthBars" unique_id=1602976465 node_paths=PackedStringArray("player_node")]
+offset_top = -39.0
+offset_right = 391.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3381y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6pv2d")
+step = 1.0
+value = 67.0
+script = ExtResource("5_gee14")
+player_node = NodePath("../../Players/player1")
+
+[node name="HealthBar2" type="ProgressBar" parent="HealthBars" unique_id=1184036539 node_paths=PackedStringArray("player_node")]
+offset_left = 761.0
+offset_top = -39.0
 offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.44850355, 0.9138041, 0.2748028, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_3381y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6pv2d")
+step = 1.0
+value = 67.0
+script = ExtResource("5_gee14")
+player_node = NodePath("../../Players/player2")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HealthBars" unique_id=2045266994]
+offset_right = 273.0
+offset_bottom = 232.0
+value = 100.0
+fill_mode = 4
+
+[node name="UI" type="Control" parent="." unique_id=1542410296]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="YouDied" type="Sprite2D" parent="UI" unique_id=1432989421]
+visible = false
+position = Vector2(547, 344)
+scale = Vector2(0.46226415, 0.4247529)
+texture = ExtResource("2_lnu2h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1268171328]
+z_index = -100
+offset_left = -145.0
+offset_top = -76.0
+offset_right = 1341.0
+offset_bottom = 850.0
+color = Color(0.3019608, 0.6666667, 1, 1)
 [node name="Walls" type="TileMap" parent="." unique_id=291919473]
 tile_set = SubResource("TileSet_3381y")
 format = 2

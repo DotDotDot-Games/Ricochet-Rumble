@@ -7,6 +7,7 @@
 size = Vector2(32, 32)
 
 [node name="upgrade_item" type="Sprite2D" unique_id=1388160668]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_roxj2")
 script = ExtResource("2_dqsuh")
 

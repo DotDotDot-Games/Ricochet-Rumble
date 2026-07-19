@@ -11,5 +11,7 @@ var random_upgrade = [fire_rate,bullet_count,damage,bullet_speed,more_bounces].p
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		random_upgrade.apply(body.get_node("WeaponNode"))
-		queue_free()
+		for child in body.get_children():
+			if child.get_class() == "Node2D":
+				random_upgrade.apply(child)
+				queue_free()

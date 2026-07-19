@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name PlayerNode
 
+signal on_die
+
 #constants
 
 @export var stats: PlayerStats
@@ -13,12 +15,13 @@ class_name PlayerNode
 
 #vars
 
+var can_move := true
 var moving := false
 var facing := Vector2(1,0)
 #scenes
-@onready var UI = $"../../UI"
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 func _ready():
 	sprite.self_modulate = stats.color
@@ -28,12 +31,12 @@ func _physics_process(_delta: float) -> void:
 	if stats.health <= 0:
 		kill()
 		
-	var direction: Vector2
-
-	if stats.player_type == 0:
-		direction = Input.get_vector("LEFT_P1", "RIGHT_P1", "UP_P1", "DOWN_P1")
-	else :
-		direction = Input.get_vector("LEFT_P2", "RIGHT_P2", "UP_P2", "DOWN_P2")
+	var direction := _get_vector(stats.player_type)
+	
+	if Input.is_action_pressed(_get_action("STAY", stats.player_type)):
+		can_move = false
+	else:
+		can_move = true
 
 	if direction != Vector2.ZERO:
 		facing = direction.normalized()
@@ -42,14 +45,30 @@ func _physics_process(_delta: float) -> void:
 		moving = false
 	
 	self.rotation = facing.angle()
-	velocity = direction.normalized() * stats.speed
+	
+	if can_move:
+		velocity = direction.normalized() * stats.speed
+	else:
+		velocity = Vector2.ZERO
+	
 	move_and_slide()
 
+func _get_vector(player: int) -> Vector2:
+	var idx := str(player+1)
+	
+	return Input.get_vector("LEFT_P"+idx, "RIGHT_P"+idx, "UP_P"+idx, "DOWN_P"+idx)
+
+func _get_action(action: String, player: int) -> String:
+	var idx := str(player+1)
+	return action+"_P"+idx
+
 func damage(value):
+	animation.play("hitted")
 	stats.health -= value
 	#print(stats.health)
 	
 func kill():
+	on_die.emit()
 	#UI.visible = true
 	#for child in UI.get_children():
 	#	child.visible = true

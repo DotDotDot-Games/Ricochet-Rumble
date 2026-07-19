@@ -24,5 +24,6 @@ bullets_per_shot = 3
 scene = "uid://b1pcrot6vtb1h"
 _id = "shootgun"
 name = "Shootgun"
+icon = ExtResource("3_75831")
 texture = SubResource("SpriteFrames_2ry2h")
 metadata/_custom_type_script = "uid://lvdkcrh7sdjy"

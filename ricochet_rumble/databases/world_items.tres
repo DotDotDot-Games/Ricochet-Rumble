@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Registry" format=3 uid="uid://cdrgutqrps823"]
 
 [ext_resource type="Resource" uid="uid://cet8eiqtw4hda" path="res://content/items/test_item/test_item.tres" id="1_8pirt"]
+[ext_resource type="Resource" uid="uid://cogbpa6jp48dw" path="res://content/items/weapons/shootgun/shootgun.tres" id="1_eo1r4"]
 [ext_resource type="Script" uid="uid://dqtv77mng5dyh" path="res://addons/yard/registry.gd" id="1_ujnec"]
-[ext_resource type="Resource" uid="uid://u3lwduj77lh8" path="res://content/items/weapons/pistol/pistol.tres" id="2_8pirt"]
-[ext_resource type="Resource" uid="uid://b3mtqkvbkkagg" path="res://content/items/weapons/sniper/sniper.tres" id="3_0cjv4"]
-[ext_resource type="Resource" uid="uid://cogbpa6jp48dw" path="res://content/items/weapons/shootgun/shootgun.tres" id="4_ptgdv"]
-[ext_resource type="Resource" uid="uid://nv4sp4tlu25c" path="res://content/items/weapons/eightgun/eightgun.tres" id="5_eo1r4"]
+[ext_resource type="Resource" uid="uid://b3mtqkvbkkagg" path="res://content/items/weapons/sniper/sniper.tres" id="3_bigs6"]
+[ext_resource type="Resource" uid="uid://nv4sp4tlu25c" path="res://content/items/weapons/eightgun/eightgun.tres" id="4_mbgo3"]
+[ext_resource type="Resource" uid="uid://u3lwduj77lh8" path="res://content/items/weapons/pistol/pistol.tres" id="5_2vrg7"]
 
 [resource]
 script = ExtResource("1_ujnec")
@@ -34,20 +34,20 @@ _string_ids_to_uids = Dictionary[StringName, StringName]({
 })
 _property_index = Dictionary[StringName, Dictionary]({
 &"item_data": {
+ExtResource("1_eo1r4"): {
+&"world_shootgun": true
+},
 ExtResource("1_8pirt"): {
 &"world_test_item": true
 },
-ExtResource("2_8pirt"): {
-&"world_pistol": true
-},
-ExtResource("3_0cjv4"): {
+ExtResource("3_bigs6"): {
 &"world_sniper": true
 },
-ExtResource("4_ptgdv"): {
-&"world_shootgun": true
-},
-ExtResource("5_eo1r4"): {
+ExtResource("4_mbgo3"): {
 &"world_eightgun": true
+},
+ExtResource("5_2vrg7"): {
+&"world_pistol": true
 }
 }
 })

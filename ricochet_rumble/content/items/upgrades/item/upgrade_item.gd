@@ -1,7 +1,6 @@
 extends Sprite2D
 
-@export var upgrade: PlayerUpgrades2
-
+@export var upgrade: PlayerUpgrades
 var bullet_count = preload("res://content/items/upgrades/resources/number_of_bullets.tres")
 var fire_rate = preload("res://content/items/upgrades/resources/fire_rate.tres")
 var damage = preload("res://content/items/upgrades/resources/damage.tres")

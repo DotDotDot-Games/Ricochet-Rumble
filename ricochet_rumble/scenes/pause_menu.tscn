@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ca4jeh28p6ebe"]
+
+[ext_resource type="Script" uid="uid://cqna5mfn4diq7" path="res://scripts/pause_menu.gd" id="1_kukqi"]
+[ext_resource type="Script" uid="uid://tb41nu81sfat" path="res://components/nodes/controls/buttons/resume_button.gd" id="1_myx47"]
+[ext_resource type="Script" uid="uid://dw2w5x7mwady8" path="res://components/nodes/controls/buttons/unpause_scene_button.gd" id="2_kukqi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kukqi"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="PauseMenu" type="CenterContainer" unique_id=1592771618]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kukqi")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=2108908568]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kukqi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1920668989]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=418479846]
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer" unique_id=681831121]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer" unique_id=1076448315]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="Panel/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=401885335]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resume"
+script = ExtResource("1_myx47")
+
+[node name="Restart" type="Button" parent="Panel/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1988418638]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Restart"
+script = ExtResource("2_kukqi")
+scene_dir = "uid://b320cdrv11ivs"
+metadata/_custom_type_script = "uid://dw2w5x7mwady8"
+
+[node name="Return" type="Button" parent="Panel/VBoxContainer/VBoxContainer" unique_id=1221536928]
+layout_mode = 2
+text = "Return To Main Menu"
+script = ExtResource("2_kukqi")
+metadata/_custom_type_script = "uid://dw2w5x7mwady8"

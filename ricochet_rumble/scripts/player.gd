@@ -47,7 +47,7 @@ func _physics_process(_delta: float) -> void:
 
 func damage(value):
 	stats.health -= value
-	print(stats.health)
+	#print(stats.health)
 	
 func kill():
 	#UI.visible = true
@@ -81,4 +81,4 @@ func _setup_weapon() -> void:
 	
 	weapon.global_position = self.global_position
 		
-	print("Player Weapon: setted weapon on position ", self.global_position, " and now is: ", weapon.global_position)
+	#print("Player Weapon: setted weapon on position ", self.global_position, " and now is: ", weapon.global_position)

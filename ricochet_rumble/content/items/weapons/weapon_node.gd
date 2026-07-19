@@ -37,7 +37,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 		
-	print("Generated weapon: ", stats.to_dict())
+	#print("Generated weapon: ", stats.to_dict())
 	if not bullets_container:
 		bullets_container = $"/root/Game/Bullets"
 
@@ -45,7 +45,7 @@ func _update_stats():
 	if not stats:
 		return
 	
-	print(sprite)
+	#print(sprite)
 	sprite.sprite_frames = stats.texture
 	fire_cooldown.wait_time = stats.fire_rate
 
@@ -70,7 +70,7 @@ func use() -> void:
 			self.sprite.play("shooting")
 		
 		bullets_container.add_child(bullet)
-		print("Bullet spawned!")
+		#print("Bullet spawned!")
 
 func _bullet_angle_spawn_method(idx: int) -> float:
 	

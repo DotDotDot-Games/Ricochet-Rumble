@@ -9,7 +9,8 @@ enum UpgradeType {
 	FIRE_RATE,
 	MORE_BOUNCES,
 	DAMAGE,
-	SPEED
+	SPEED,
+	EXPLOSION
 }
 var dict = {
 	UpgradeType.REGENERATION: "regeneration",
@@ -19,8 +20,10 @@ var dict = {
 	UpgradeType.BULLET_SPEED: "speed",
 	UpgradeType.FIRE_RATE: "fire_rate",
 	UpgradeType.MORE_BOUNCES: "_current_value",
-	UpgradeType.SPEED: "speed"
+	UpgradeType.SPEED: "speed",
+	UpgradeType.EXPLOSION: "explosion",
 }
+var explosion_scene = preload("res://content/bullets/explosive_bullet/explosive_bullet.tres")
 @export var name : UpgradeType
 @export var type : UpgradeType
 @export var value : float
@@ -30,7 +33,7 @@ var stat:
 		 
 func apply(node):
 	
-	if name in [UpgradeType.REGENERATION, UpgradeType.MORE_BULLETS,UpgradeType.FIRE_RATE,UpgradeType.SPEED]:
+	if name in [UpgradeType.REGENERATION, UpgradeType.MORE_BULLETS,UpgradeType.FIRE_RATE]:
 		#print("Before " + str(stat)+" ", node.stats[stat])
 		node.stats[stat] += value
 		node._update_stats()
@@ -43,3 +46,7 @@ func apply(node):
 		#print("Before " + str(stat)+" ", node.stats.bullet.bounces[stat])
 		node.stats.bullet.bounces[stat] += value
 		#wprint("After " + str(stat)+" ", node.stats.bullet.bounces[stat])
+	elif name in [UpgradeType.SPEED]:
+		node.get_parent().stats[stat] += value
+	elif name in [UpgradeType.EXPLOSION]:
+		node.stats.bullet = explosion_scene

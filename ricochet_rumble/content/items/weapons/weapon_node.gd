@@ -105,11 +105,11 @@ func _physics_process(_delta: float) -> void:
 
 func can_shoot(action: String) -> bool:
 	
-	print("Input Shoot: can fire? ", can_fire)
+	#print("Input Shoot: can fire? ", can_fire)
 	if not can_fire:
 		return false
 	
-	print("Input Shoot: fire_cooldown = ", fire_cooldown.time_left)
+	#print("Input Shoot: fire_cooldown = ", fire_cooldown.time_left)
 	if not fire_cooldown.is_stopped():
 		return false
 	

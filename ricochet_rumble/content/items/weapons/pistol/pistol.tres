@@ -23,5 +23,6 @@ scene = "uid://cqk0istnilb7a"
 _id = "pistol"
 name = "Pistol"
 description = "A normal bounce pistol"
+icon = ExtResource("3_8vcsp")
 texture = SubResource("SpriteFrames_wibt7")
 metadata/_custom_type_script = "uid://lvdkcrh7sdjy"

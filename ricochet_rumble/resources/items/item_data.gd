@@ -26,7 +26,7 @@ var id:
 @export var description: String
 
 ## Icon of item in UI
-@export var icon: SpriteFrames
+@export var icon: Texture2D
 
 ## Texture of item in hand
 @export var texture: SpriteFrames

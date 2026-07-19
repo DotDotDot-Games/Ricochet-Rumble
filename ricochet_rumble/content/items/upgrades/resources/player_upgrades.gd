@@ -1,5 +1,5 @@
 extends Resource
-class_name PlayerUpgrades2
+class_name PlayerUpgrades
 
 enum UpgradeType {
 	REGENERATION,
@@ -31,7 +31,7 @@ var stat:
 	get:
 		return dict[type]
 		 
-func apply(node):
+func apply(node: PlayerNode):
 	
 	if name in [UpgradeType.REGENERATION, UpgradeType.MORE_BULLETS,UpgradeType.FIRE_RATE]:
 		#print("Before " + str(stat)+" ", node.stats[stat])

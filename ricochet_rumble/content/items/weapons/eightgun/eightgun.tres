@@ -23,5 +23,6 @@ bullets_per_shot = 8
 scene = "uid://bo5124260mito"
 _id = "eightgun"
 name = "Eightgun"
+icon = ExtResource("3_bhhfg")
 texture = SubResource("SpriteFrames_e6l3j")
 metadata/_custom_type_script = "uid://lvdkcrh7sdjy"

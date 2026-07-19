@@ -1,6 +1,24 @@
 [gd_scene format=3 uid="uid://dpd73sfwlrk0j"]
 
 [ext_resource type="Texture2D" uid="uid://c52jt83etynrb" path="res://assets/character.png" id="1_fgkus"]
+[ext_resource type="Theme" uid="uid://e4tx2w3lqau" path="res://assets/buttons/both_inverted_theme.tres" id="1_mgrm8"]
+[ext_resource type="Theme" uid="uid://mc41ygadj5oy" path="res://assets/buttons/red_theme.tres" id="2_dc4i4"]
+[ext_resource type="FontFile" uid="uid://b57d7rk1sif4r" path="res://assets/fonts/pixelify_sans/PixelifySans-VariableFont_wght.ttf" id="2_e54dn"]
+[ext_resource type="Script" uid="uid://1xdawe48l6kv" path="res://scripts/start.gd" id="3_3yumr"]
+[ext_resource type="Theme" uid="uid://5vrsd1tludiu" path="res://assets/buttons/blue_theme.tres" id="3_e54dn"]
+[ext_resource type="Script" uid="uid://d3yg5uf86ck3g" path="res://scripts/options.gd" id="5_cs5ya"]
+[ext_resource type="Script" uid="uid://b5ltaqmki84pc" path="res://scripts/quit.gd" id="5_e54dn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3381y"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pv2d"]
+bg_color = Color(0, 0, 1, 1)
+corner_radius_top_left = 30
+corner_radius_bottom_left = 30
 
 [node name="Title_screen" type="Control" unique_id=958065584]
 layout_mode = 3
@@ -10,48 +28,110 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="." unique_id=802946535]
+[node name="Title" type="Control" parent="." unique_id=169573688]
+anchors_preset = 0
+offset_left = -266.0
+offset_top = -150.0
+offset_right = -226.0
+offset_bottom = -110.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Label" type="Label" parent="Title" unique_id=802946535]
 layout_mode = 0
 offset_left = 280.0
 offset_top = 148.0
 offset_right = 872.0
 offset_bottom = 236.0
+theme = ExtResource("1_mgrm8")
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_fonts/font = ExtResource("2_e54dn")
 theme_override_font_sizes/font_size = 64
 text = "Ricochet Rumbleee"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=158898167]
+[node name="Label2" type="Label" parent="Title" unique_id=1086306219]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 148.0
+offset_right = 872.0
+offset_bottom = 236.0
+theme = ExtResource("1_mgrm8")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_e54dn")
+theme_override_font_sizes/font_size = 64
+text = "Ricochet"
+
+[node name="Panel" type="Panel" parent="Title" unique_id=1471915767]
+z_index = -1
+layout_mode = 0
+offset_left = 564.6666
+offset_top = 150.0
+offset_right = 872.0
+offset_bottom = 233.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3381y")
+
+[node name="Panel3" type="Panel" parent="Title" unique_id=1976550372]
+z_index = -1
+layout_mode = 0
+offset_left = 264.66666
+offset_top = 148.66667
+offset_right = 564.0
+offset_bottom = 232.33333
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pv2d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=331259167]
 layout_mode = 0
 offset_left = 288.0
 offset_top = 287.0
 offset_right = 864.0
 offset_bottom = 648.0
-alignment = 1
+theme_override_constants/separation = 60
+accessibility_region = true
 
 [node name="Start" type="Button" parent="VBoxContainer" unique_id=1847799003]
 layout_mode = 2
-text = "Start Game"
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = ExtResource("1_mgrm8")
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
+theme_override_constants/icon_max_width = 0
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_font_sizes/font_size = 32
+text = " Start       Game"
+script = ExtResource("3_3yumr")
 
 [node name="Options" type="Button" parent="VBoxContainer" unique_id=1558176738]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = ExtResource("2_dc4i4")
+theme_override_font_sizes/font_size = 32
 text = "Options"
+script = ExtResource("5_cs5ya")
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=2078267675]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme = ExtResource("3_e54dn")
+theme_override_font_sizes/font_size = 32
 text = "Quit
 "
+script = ExtResource("5_e54dn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=862061159]
 z_index = -10
 layout_mode = 0
-offset_left = -6.0
-offset_top = -3.0
-offset_right = 1214.0
-offset_bottom = 774.0
+offset_left = -18.0
+offset_top = -53.0
+offset_right = 1202.0
+offset_bottom = 724.0
+mouse_filter = 2
 color = Color(0.44850355, 0.9138041, 0.2748028, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=901784268]
 modulate = Color(0, 0, 1, 1)
-position = Vector2(143.99998, 259.99997)
+position = Vector2(144.00002, 335.00003)
 rotation = -0.23212878
 scale = Vector2(5, 5)
 texture = ExtResource("1_fgkus")
@@ -62,3 +142,7 @@ position = Vector2(1028, 491.00006)
 rotation = 0.50265485
 scale = Vector2(5, 5)
 texture = ExtResource("1_fgkus")
+
+[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="VBoxContainer/Options" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="VBoxContainer/Quit" method="_on_pressed"]

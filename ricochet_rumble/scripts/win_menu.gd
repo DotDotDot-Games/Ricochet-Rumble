@@ -13,4 +13,5 @@ func win(player: PlayerStats):
 	var new_text := FORMATED_LABEL_TEXT % [player.color.to_html(), player.player_type+1]
 	print("Win Menu: New text = ", new_text)
 	label.text = new_text
+	
 	show()

@@ -26,7 +26,7 @@ var facing := Vector2(1,0)
 func _ready():
 	sprite.self_modulate = stats.color
 	
-	
+
 func _physics_process(_delta: float) -> void:
 	if stats.health <= 0:
 		kill()
@@ -65,7 +65,7 @@ func _get_action(action: String, player: int) -> String:
 func damage(value):
 	animation.play("hitted")
 	stats.health -= value
-	print(stats.health)
+	#print(stats.health)
 	
 func kill():
 	on_die.emit()
@@ -100,4 +100,4 @@ func _setup_weapon() -> void:
 	
 	weapon.global_position = self.global_position
 		
-	print("Player Weapon: setted weapon on position ", self.global_position, " and now is: ", weapon.global_position)
+	#print("Player Weapon: setted weapon on position ", self.global_position, " and now is: ", weapon.global_position)

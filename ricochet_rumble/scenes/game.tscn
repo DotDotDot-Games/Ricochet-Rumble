@@ -7,13 +7,20 @@
 [ext_resource type="Resource" uid="uid://bfxn3hqso7c70" path="res://resources/players/player_1.tres" id="2_iywne"]
 [ext_resource type="Texture2D" uid="uid://bwf0nunbwtwmx" path="res://assets/wall.png" id="2_yqjtg"]
 [ext_resource type="Resource" uid="uid://c2ma7k5aeo5xb" path="res://resources/players/player_2.tres" id="3_p57ef"]
+[ext_resource type="Script" uid="uid://dm1616676x2di" path="res://scripts/health_bar.gd" id="5_gee14"]
 [ext_resource type="PackedScene" uid="uid://cl7ggk1emy10f" path="res://content/items/upgrades/item/upgrade_item.tscn" id="8_gee14"]
 [ext_resource type="Resource" uid="uid://bprdk62npwcs4" path="res://content/items/upgrades/resources/fire_rate.tres" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://b3llmy8gajktt" path="res://content/item_spawners/default_spawner/default_spawner.tscn" id="10_vtaks"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3381y"]
+bg_color = Color(0.46050733, 0, 0.03949087, 0.36078432)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pv2d"]
+bg_color = Color(0, 0.719452, 0.34379056, 1)
+
 [sub_resource type="Resource" id="Resource_kvuet"]
 script = ExtResource("2_dinhu")
-node = NodePath("../../../Players/player1")
+node = NodePath("../../../../Players/player1")
 properties = Dictionary[StringName, Array]({
 &"_set_modulate": ["weapon:fire_cooldown"],
 &"_set_texture": ["weapon:stats:icon"]
@@ -22,7 +29,7 @@ metadata/_custom_type_script = "uid://cjxdpmmllixjb"
 
 [sub_resource type="Resource" id="Resource_trtic"]
 script = ExtResource("2_dinhu")
-node = NodePath("../../../Players/player2")
+node = NodePath("../../../../Players/player2")
 properties = Dictionary[StringName, Array]({
 &"_set_modulate": ["weapon:fire_cooldown"],
 &"_set_texture": ["weapon:stats:icon"]
@@ -56,21 +63,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WeaponLeft" parent="CanvasLayer/UI" unique_id=925478548 instance=ExtResource("1_kvpfn")]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=1803388205]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 92.0
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/VBoxContainer" unique_id=1602976465 node_paths=PackedStringArray("player_node")]
+custom_minimum_size = Vector2(256, 24)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3381y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6pv2d")
+step = 1.0
+value = 67.0
+script = ExtResource("5_gee14")
+player_node = NodePath("../../../../Players/player1")
+
+[node name="WeaponLeft" parent="CanvasLayer/UI/VBoxContainer" unique_id=925478548 instance=ExtResource("1_kvpfn")]
+layout_mode = 2
 data = SubResource("Resource_kvuet")
 
-[node name="WeaponIcon" parent="CanvasLayer/UI" unique_id=1716029995 instance=ExtResource("1_kvpfn")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/UI" unique_id=469063965]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -64.0
-offset_right = 0.0
-offset_bottom = 64.0
+offset_bottom = 91.0
 grow_horizontal = 0
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/VBoxContainer2" unique_id=1184036539 node_paths=PackedStringArray("player_node")]
+custom_minimum_size = Vector2(256, 24)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3381y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6pv2d")
+step = 1.0
+value = 67.0
+script = ExtResource("5_gee14")
+player_node = NodePath("../../../../Players/player2")
+
+[node name="WeaponIcon" parent="CanvasLayer/UI/VBoxContainer2" unique_id=1716029995 instance=ExtResource("1_kvpfn")]
+layout_mode = 2
 data = SubResource("Resource_trtic")
 
 [node name="Game_Manager" type="Node" parent="." unique_id=1086733119]
@@ -93,11 +125,11 @@ upgrade = ExtResource("9_0tnpc")
 [node name="Players" type="Node" parent="." unique_id=590383083]
 
 [node name="player1" parent="Players" unique_id=231532690 instance=ExtResource("1_uwrxv")]
-position = Vector2(449, 329)
+position = Vector2(527, 589)
 stats = ExtResource("2_iywne")
 
 [node name="player2" parent="Players" unique_id=1715600516 instance=ExtResource("1_uwrxv")]
-position = Vector2(734, 296)
+position = Vector2(545, 78)
 stats = ExtResource("3_p57ef")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=568506479]
@@ -105,13 +137,21 @@ offset = Vector2(576, 324)
 
 [node name="Bullets" type="Node" parent="." unique_id=975566238]
 
-[node name="Background" type="Node" parent="." unique_id=63043914]
+[node name="Background" type="Node" parent="." unique_id=247016885]
 
-[node name="ColorRect" type="ColorRect" parent="Background" unique_id=675071549]
-z_index = -10
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.44850355, 0.9138041, 0.2748028, 1)
+[node name="Water" type="ColorRect" parent="Background" unique_id=1268171328]
+z_index = -100
+offset_left = -474.0
+offset_top = -305.0
+offset_right = 1670.0
+offset_bottom = 1079.0
+color = Color(0, 0.4266651, 0.93404996, 1)
+
+[node name="Grass" type="ColorRect" parent="Background" unique_id=96136423]
+z_index = -99
+offset_right = 1147.0
+offset_bottom = 643.0
+color = Color(0, 0.87486136, 0.06103791, 1)
 
 [node name="Walls" type="TileMap" parent="." unique_id=291919473]
 tile_set = SubResource("TileSet_3381y")

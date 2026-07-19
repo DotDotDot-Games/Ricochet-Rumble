@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cqna5mfn4diq7" path="res://scripts/pause_menu.gd" id="1_kukqi"]
 [ext_resource type="Script" uid="uid://tb41nu81sfat" path="res://components/nodes/controls/buttons/resume_button.gd" id="1_myx47"]
+[ext_resource type="Theme" uid="uid://mc41ygadj5oy" path="res://assets/buttons/red_theme.tres" id="2_5d2l8"]
 [ext_resource type="Script" uid="uid://dw2w5x7mwady8" path="res://components/nodes/controls/buttons/unpause_scene_button.gd" id="2_kukqi"]
+[ext_resource type="Theme" uid="uid://5vrsd1tludiu" path="res://assets/buttons/blue_theme.tres" id="4_7l7mv"]
+[ext_resource type="Theme" uid="uid://e4tx2w3lqau" path="res://assets/buttons/both_inverted_theme.tres" id="6_1s2dm"]
+[ext_resource type="Texture2D" uid="uid://rxxo82wxn3ch" path="res://assets/buttons/ both_background.png" id="7_1s2dm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kukqi"]
 content_margin_left = 4.0
@@ -15,6 +19,22 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88e76"]
+texture = ExtResource("7_1s2dm")
+texture_margin_left = 4.0
+texture_margin_right = 4.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1s2dm"]
+texture = ExtResource("7_1s2dm")
+texture_margin_left = 4.0
+texture_margin_right = 4.0
+modulate_color = Color(0.44705883, 0.44705883, 0.44705883, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knqa7"]
+texture = ExtResource("7_1s2dm")
+texture_margin_left = 4.0
+texture_margin_right = 4.0
 
 [node name="PauseMenu" type="CenterContainer" unique_id=1592771618]
 process_mode = 3
@@ -34,6 +54,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=418479846]
 layout_mode = 2
+theme_override_constants/outline_size = 2
 text = "Game Paused"
 horizontal_alignment = 1
 
@@ -46,12 +67,14 @@ layout_mode = 2
 [node name="Resume" type="Button" parent="Panel/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=401885335]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_7l7mv")
 text = "Resume"
 script = ExtResource("1_myx47")
 
 [node name="Restart" type="Button" parent="Panel/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1988418638]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_5d2l8")
 text = "Restart"
 script = ExtResource("2_kukqi")
 scene_dir = "uid://b320cdrv11ivs"
@@ -59,6 +82,10 @@ metadata/_custom_type_script = "uid://dw2w5x7mwady8"
 
 [node name="Return" type="Button" parent="Panel/VBoxContainer/VBoxContainer" unique_id=1221536928]
 layout_mode = 2
+theme = ExtResource("6_1s2dm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_88e76")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1s2dm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_knqa7")
 text = "Return To Main Menu"
 script = ExtResource("2_kukqi")
 metadata/_custom_type_script = "uid://dw2w5x7mwady8"

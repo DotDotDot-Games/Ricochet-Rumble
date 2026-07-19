@@ -39,7 +39,8 @@ func _ready() -> void:
 		
 	print("Generated weapon: ", stats.to_dict())
 	if not bullets_container:
-		bullets_container = $"/root/Game/Bullets"
+		bullets_container = get_tree().root.find_child("Bullets", true, false)
+		print("Bullets Container: getted = ", bullets_container)
 
 func _update_stats():
 	if not stats:

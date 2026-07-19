@@ -14,7 +14,7 @@ const angles := [
 func _on_bounce() -> void:
 	
 	var scene := preload("res://content/bullets/mini_bullet/mini_bullet.tscn")
-	var bullets_container: Node = get_node("/root/Game/Bullets")
+	var bullets_container: Node = get_tree().root.find_child("Bullets", true, false)
 	
 	if not bullets_container:
 		printerr("Bullets Container: No bullets_container")

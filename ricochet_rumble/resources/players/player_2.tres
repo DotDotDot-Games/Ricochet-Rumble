@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dvwrcysmerik0" path="res://resources/players/player_stats.gd" id="1_pyjqt"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_pyjqt")
 player_type = 1
 health = 100.0

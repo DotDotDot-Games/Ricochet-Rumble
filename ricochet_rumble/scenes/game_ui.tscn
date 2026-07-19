@@ -54,3 +54,4 @@ script = ExtResource("1_u001w")
 
 [node name="WeaponIcon" parent="VBoxContainer2" unique_id=1202394297 instance=ExtResource("2_u2dgd")]
 layout_mode = 2
+size_flags_horizontal = 8

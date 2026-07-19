@@ -6,7 +6,6 @@
 [ext_resource type="FontFile" uid="uid://b57d7rk1sif4r" path="res://assets/fonts/pixelify_sans/PixelifySans-VariableFont_wght.ttf" id="2_e54dn"]
 [ext_resource type="Theme" uid="uid://5vrsd1tludiu" path="res://assets/buttons/blue_theme.tres" id="3_e54dn"]
 [ext_resource type="Texture2D" uid="uid://rxxo82wxn3ch" path="res://assets/buttons/ both_background.png" id="4_tklts"]
-[ext_resource type="Script" uid="uid://d3yg5uf86ck3g" path="res://scripts/options.gd" id="5_cs5ya"]
 [ext_resource type="Script" uid="uid://b5ltaqmki84pc" path="res://scripts/quit.gd" id="5_e54dn"]
 [ext_resource type="Texture2D" uid="uid://dxlg6j6cxu28b" path="res://assets/buttons/default_background.png" id="5_ib7db"]
 [ext_resource type="Script" uid="uid://n4htfoxb2d2v" path="res://components/nodes/controls/buttons/scene_button.gd" id="5_u26n3"]
@@ -148,15 +147,6 @@ text = " Start     Game  "
 script = ExtResource("5_u26n3")
 scene = ExtResource("6_ib7db")
 
-[node name="Options" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1558176738]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
-theme = ExtResource("2_dc4i4")
-theme_override_font_sizes/font_size = 32
-text = "Options"
-script = ExtResource("5_cs5ya")
-
 [node name="Quit" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=2078267675]
 layout_mode = 2
 size_flags_vertical = 3
@@ -168,5 +158,4 @@ text = "Quit
 script = ExtResource("5_e54dn")
 
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Start" to="CenterContainer/MarginContainer/VBoxContainer/Start" method="_on_pressed"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Options" to="CenterContainer/MarginContainer/VBoxContainer/Options" method="_on_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Quit" to="CenterContainer/MarginContainer/VBoxContainer/Quit" method="_on_pressed"]

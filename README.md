@@ -4,7 +4,7 @@ Ricochet Rumble is 2-player a shooter game with a retro aesthetic unlike the res
 
 In other words, if you shoot directly at them, the bullets will bounce back toward you!
 
-![Ricochet Rumble][ricochet-rumble1.png]
+![Ricochet Rumble](ricochet-rumble1.png)
  
 ## How to Play
 

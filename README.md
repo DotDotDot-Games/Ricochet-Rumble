@@ -70,5 +70,7 @@ DevGreem:
 LeviathanGamez:
 - Health UI
 - Start menu
+- 
+AI usage: None
 
 That’s how we built the project, step by step!
